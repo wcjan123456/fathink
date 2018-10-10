@@ -1,0 +1,208 @@
+{extend name="common"/}
+{block name="content"}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <span class="glyphicon glyphicon-tasks"></span> 项目列表 <small>记录公司所有项目</small></h3>
+    </div>
+    <div class="panel-body">
+        <a href="{:url('create_item')}" class="btn btn-primary btn-sm"> 添加项目</a>
+        <form class="form-inline pull-right">
+            <div class="form-group">
+                <select name="yearlenth" class="form-control input-sm">
+                    <option value="0">全部</option>
+                    <option value="1">当前月</option>
+                    <option value="2">季度</option>
+                    <option value="3">半年</option>
+                    <option value="4">一年</option>
+                    <option value="5">三年</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" name="subject"
+                       class="form-control input-sm" placeholder="输入项目名称搜索">
+            </div>
+            <button type="submit" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-search"></span> 搜索</button>
+        </form>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="text-lg">中梁壹号院围挡</div>
+                    <div class="text-muted text-sm">
+                        <span class="glyphicon glyphicon-user margin-right">xxx</span>
+                        <span class="glyphicon glyphicon-phone-alt margin-right">17787937708</span>
+                        <span class="glyphicon glyphicon-calendar margin-right">2018年9月2日</span>
+                    </div>
+                </div>
+                <div class="col-sm-1 text-center">
+                    <div>项目状态</div>
+                    已完结
+                </div>
+                <div class="col-sm-1 text-center">
+                    <div>项目金额</div>
+                    ￥34000.00
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="btn btn-info btn-sm">清单</button>
+                    <button type="button" class="btn btn-primary btn-sm">编辑</button>
+                    <button type="button" class="btn btn-success btn-sm">进度</button>
+                    <button type="button" class="btn btn-danger btn-sm">删除</button>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="text-lg">中梁壹号院围挡</div>
+                    <div class="text-muted text-sm">
+                        <span class="glyphicon glyphicon-user margin-right">xxx</span>
+                        <span class="glyphicon glyphicon-phone-alt margin-right">17787937708</span>
+                        <span class="glyphicon glyphicon-calendar margin-right">2018年9月2日</span>
+                    </div>
+                </div>
+                <div class="col-sm-1 text-center">
+                    <div>项目状态</div>
+                    已完结
+                </div>
+                <div class="col-sm-1 text-center">
+                    <div>项目金额</div>
+                    ￥34000.00
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="btn btn-info btn-sm">清单</button>
+                    <button type="button" class="btn btn-primary btn-sm">编辑</button>
+                    <button type="button" class="btn btn-success btn-sm">进度</button>
+                    <button type="button" class="btn btn-danger btn-sm">删除</button>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="text-lg">中梁壹号院围挡</div>
+                    <div class="text-muted text-sm">
+                        <span class="glyphicon glyphicon-user margin-right">xxx</span>
+                        <span class="glyphicon glyphicon-phone-alt margin-right">17787937708</span>
+                        <span class="glyphicon glyphicon-calendar margin-right">2018年9月2日</span>
+                    </div>
+                </div>
+                <div class="col-sm-1 text-center">
+                    <div>项目状态</div>
+                    已完结
+                </div>
+                <div class="col-sm-1 text-center">
+                    <div>项目金额</div>
+                    ￥34000.00
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="btn btn-info btn-sm">清单</button>
+                    <button type="button" class="btn btn-primary btn-sm">编辑</button>
+                    <button type="button" class="btn btn-success btn-sm">进度</button>
+                    <button type="button" class="btn btn-danger btn-sm">删除</button>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="text-lg">中梁壹号院围挡</div>
+                    <div class="text-muted text-sm">
+                        <span class="glyphicon glyphicon-user margin-right">xxx</span>
+                        <span class="glyphicon glyphicon-phone-alt margin-right">17787937708</span>
+                        <span class="glyphicon glyphicon-calendar margin-right">2018年9月2日</span>
+                    </div>
+                </div>
+                <div class="col-sm-1 text-center">
+                    <div>项目状态</div>
+                    已完结
+                </div>
+                <div class="col-sm-1 text-center">
+                    <div>项目金额</div>
+                    ￥34000.00
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="btn btn-info btn-sm">清单</button>
+                    <button type="button" class="btn btn-primary btn-sm">编辑</button>
+                    <button type="button" class="btn btn-success btn-sm">进度</button>
+                    <button type="button" class="btn btn-danger btn-sm">删除</button>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="text-lg">中梁壹号院围挡</div>
+                    <div class="text-muted text-sm">
+                        <span class="glyphicon glyphicon-user margin-right">xxx</span>
+                        <span class="glyphicon glyphicon-phone-alt margin-right">17787937708</span>
+                        <span class="glyphicon glyphicon-calendar margin-right">2018年9月2日</span>
+                    </div>
+                </div>
+                <div class="col-sm-1 text-center">
+                    <div>项目状态</div>
+                    已完结
+                </div>
+                <div class="col-sm-1 text-center">
+                    <div>项目金额</div>
+                    ￥34000.00
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="btn btn-info btn-sm">清单</button>
+                    <button type="button" class="btn btn-primary btn-sm">编辑</button>
+                    <button type="button" class="btn btn-success btn-sm">进度</button>
+                    <button type="button" class="btn btn-danger btn-sm">删除</button>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="text-lg">中梁壹号院围挡</div>
+                    <div class="text-muted text-sm">
+                        <span class="glyphicon glyphicon-user margin-right">xxx</span>
+                        <span class="glyphicon glyphicon-phone-alt margin-right">17787937708</span>
+                        <span class="glyphicon glyphicon-calendar margin-right">2018年9月2日</span>
+                    </div>
+                </div>
+                <div class="col-sm-1 text-center">
+                    <div>项目状态</div>
+                    已完结
+                </div>
+                <div class="col-sm-1 text-center">
+                    <div>项目金额</div>
+                    ￥34000.00
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="btn btn-info btn-sm">清单</button>
+                    <button type="button" class="btn btn-primary btn-sm">编辑</button>
+                    <button type="button" class="btn btn-success btn-sm">进度</button>
+                    <button type="button" class="btn btn-danger btn-sm">删除</button>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+</div>
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <li>
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+{/block}

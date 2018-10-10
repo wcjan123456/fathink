@@ -1,0 +1,70 @@
+{extend name="common"/}
+{block name="name"}部门列表{/block}
+{block name="content"}
+<section class="am-panel am-panel-default">
+    <header class="am-panel-hd">
+         <span class="am-btn am-btn-primary am-btn-hollow am-icon-plus"
+               onclick="im.modal('#addDepartment',480)"> 添加部门</span>
+    </header>
+    <table class="am-table am-table-striped">
+        <thead>
+        <tr>
+            <th>部门</th>
+            <th width="250">管理</th>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name="list" id="vo"}
+        <tr>
+            <td class="am-table-level-{$vo.level}">{$vo.department}</td>
+            <td>
+                <a class="am-btn am-btn-sm am-btn-default am-icon-pencil" href="{:url('projects/details',['id'=>1])}"> 编辑</a>
+                <a class="am-btn am-btn-sm am-btn-default am-icon-trash-o" href="{:url('projects/details',['id'=>1])}"> 删除</a>
+            </td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+</section>
+{/block}
+{block name="modal"}
+<div class="am-modal am-modal-confirm" tabindex="-1" id="addDepartment">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">添加部门</div>
+        <div class="am-modal-bd">
+            <form action="{:url('add_department')}" method="POST"
+                  role="form" class="am-form am-form-horizontal">
+                <div class="am-form-group">
+                    <label class="am-u-sm-2 am-form-label">部门名称</label>
+                    <div class="am-u-sm-10">
+                        <input type="text" name="department"  placeholder="输入部门名称"/>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label class="am-u-sm-2 am-form-label">上级部门</label>
+                    <div class="am-u-sm-10">
+                        <select name="pid" data-am-selected="{maxHeight:'200px'}">
+                            <option value="0">一级部门</option>
+                            {volist name="list" id="vo"}
+                            <option value="{$vo.id}">
+                                {switch vo.level}
+                                {case 2}&nbsp;&nbsp;|--{/case}
+                                {case 3}&nbsp;&nbsp;&nbsp;&nbsp; |----{/case}
+                                {/switch}
+                                {$vo.department}
+                            </option>
+                            {/volist}
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn am-btn am-btn-default" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn am-btn am-btn-primary am-icon-check" 
+            onclick="im.submit('.am-form',this)" data-am-modal-confirm> 确定</span>
+        </div>
+    </div>
+</div>
+
+{/block}

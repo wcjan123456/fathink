@@ -1,0 +1,85 @@
+{extend name="common"/}
+{block name="name"}员工列表{/block}
+{block name="content"}
+<section class="am-panel am-panel-default">
+    <header class="am-panel-hd">
+        <span class="am-btn am-btn-primary am-btn-hollow am-icon-plus"
+              onclick="im.modal('#addUser',520)"> 添加员工</span>
+    </header>
+    <table class="am-table">
+        <tbody>
+        <tr>
+            <th width="60">UID</th>
+            <th>姓名</th>
+            <th>部门职位</th>
+            <th>联系方式</th>
+            <th width="240">管理</th>
+        </tr>
+        {volist name="list" id="vo"}
+        <tr>
+            <td>{$vo.uid}</td>
+            <td>{$vo.username}</td>
+            <td>{$vo.department}</td>
+            <td>{$vo.mobile}</td>
+            <td></td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+</section>
+
+{/block}
+{block name="modal"}
+<div class="am-modal am-modal-confirm" tabindex="-1" id="addUser">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">添加员工</div>
+        <div class="am-modal-bd">
+            <form action="{:url('create_user')}" method="POST" role="form"
+                  class="am-form am-form-horizontal">
+                <div class="am-form-group">
+                    <label class="am-u-sm-2 am-form-label">姓名</label>
+                    <div class="am-u-sm-10">
+                        <input type="text" name="username" placeholder="输入员工名称"/>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label class="am-u-sm-2 am-form-label">联系方式</label>
+                    <div class="am-u-sm-6 am-u-end">
+                        <input type="number" name="mobile" placeholder="输入员工手机号码"/>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label class="am-u-sm-2 am-form-label">部门职位</label>
+                    <div class="am-u-sm-10">
+                        <select name="department_id"  data-am-selected="{maxHeight:'200px'}">
+                            {volist name="department" id="vo"}
+                            <option value="{$vo.id}">
+                                {switch vo.level}
+                                {case 2}&nbsp;&nbsp;|--{/case}
+                                {case 3}&nbsp;&nbsp;&nbsp;&nbsp; |----{/case}
+                                {/switch}
+                                {$vo.department}
+                            </option>
+                            {/volist}
+                        </select>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <div class="am-u-sm-offset-2 am-u-sm-10 am-u-end">
+                        <div class="am-alert">
+                            <p>根据员工手机号码自动生成登陆密码，密码初始为<code>m+手机号码</code></p>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn am-btn am-btn-default" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn am-btn am-btn-primary am-icon-check" onclick="im.submit('.am-form',this)"
+                  data-am-modal-confirm> 确定</span>
+        </div>
+    </div>
+</div>
+
+{/block}

@@ -1,0 +1,139 @@
+{extend name="common"/}
+{block name="breadcrumb"}
+<li><a href="{:url('projects/index')}">项目管理</a></li>
+<li>新建项目</li>
+{/block}
+{block name="name"}新建项目{/block}
+{block name="content"}
+<div class="am-panel am-panel-default am-panel-ova">
+    <div class="am-panel-bd">
+        <form class="am-form am-form-horizontal am-margin-top-xl" action="{:url('create_item')}">
+            <div class="am-form-group">
+                <label class="am-u-sm-2 am-form-label">项目名称</label>
+                <div class="am-u-sm-6">
+                    <input type="text" name="subject" placeholder="项目名称" autocomplete="off">
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label class="am-u-sm-2 am-form-label">甲方</label>
+                <div class="am-u-sm-6">
+                    <div class="am-input-group">
+                        <input type="text" name="customer" placeholder="甲方单位名称">
+                        <div class="am-input-group-btn">
+                            <span class="am-btn am-btn-default am-icon-check-square-o"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label class="am-u-sm-2 am-form-label">甲方负责人</label>
+                <div class="am-u-sm-2 am-padding-right-0">
+                    <input type="text" name="customer_pm" placeholder="甲方单位负责人">
+                </div>
+                <div class="am-u-sm-2">
+                    <input type="text" name="customer_mobile" placeholder="联系方式">
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label class="am-u-sm-2 am-form-label">合同金额</label>
+                <div class="am-u-sm-2">
+                    <div class="am-input-group am-margin-bottom-0">
+                        <span class="am-input-group-label">￥</span>
+                        <input type="number" name="price" value="0" placeholder="￥">
+                        <span class="am-input-group-label">.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label class="am-u-sm-2 am-form-label">紧急程度</label>
+                <div class="am-u-sm-10">
+                    <div class="am-btn-group" data-am-button>
+                        <label class="am-btn am-btn-default">
+                            <input type="radio" name="level" value="1">非常紧急
+                        </label>
+                        <label class="am-btn am-btn-default">
+                            <input type="radio" name="level" value="2">紧急
+                        </label>
+                        <label class="am-btn am-btn-default">
+                            <input type="radio" name="level" value="3" checked>一般
+                        </label>
+                        <label class="am-btn am-btn-default">
+                            <input type="radio" name="level" value="4">可延后
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label class="am-u-sm-2 am-form-label">接单日期</label>
+                <div class="am-u-sm-2">
+                    <input type="text" name="dateline" readonly
+                           value="{:date('Y-m-d H:i:s')}" placeholder="yyyy-MM-dd HH:mm:ss" data-am-datepicker>
+                </div>
+                <span class="am-text-muted">默认添加时间即为接单日期</span>
+            </div>
+            <div class="am-form-group">
+                <label class="am-u-sm-2 am-form-label">完工日期</label>
+                <div class="am-u-sm-2">
+                    <input type="text" name="end_time" readonly  value="{$date}"
+                           placeholder="yyyy-MM-dd HH:mm:ss" data-am-datepicker>
+                </div>
+                <span class="am-text-muted">默认+7天为完工日期，详情选择完工日期</span>
+            </div>
+            <div class="am-form-group">
+                <label class="am-u-sm-2 am-form-label">项目经理</label>
+                <div class="am-u-sm-3">
+                    <select name="pm_id" data-am-selected="{maxHeight:'200px',searchBox:1}">
+                        {volist name="userlist" id="vo"}
+                        <option value="{$vo.uid}">{$vo.username}</option>
+                        {/volist}
+                    </select>
+                </div>
+            </div>
+            <div class="am-form-group layui-form-text">
+                <label class="am-u-sm-2 am-form-label">项目描述</label>
+                <div class="am-u-sm-8">
+                    <div id="editor"></div>
+                    <textarea name="message" id="message" style="display: none;height: 200px;" placeholder="请输入内容" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label class="am-u-sm-2 am-form-label">项目状态</label>
+                <div class="am-u-sm-2">
+                    <select name="status" data-am-selected="{dropUp: 1}">
+                        <option value="1">已接单</option>
+                        <option value="2">设计出图</option>
+                        <option value="3">已出图</option>
+                        <option value="4">制作中</option>
+                        <option value="5">等待施工</option>
+                        <option value="6">施工中</option>
+                        <option value="7">施工完成</option>
+                        <option value="8">等待收款</option>
+                        <option value="9">已完结</option>
+                    </select>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <div class="am-u-sm-offset-2 am-u-sm-6">
+                    <button type="button" onclick="im.submit('.am-form',this)" class="am-btn am-btn-primary am-icon-check"> 立即提交</button>
+                    <button type="reset" class="am-btn am-btn-default am-icon-refresh"> 重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script type="text/javascript" src="/static/wangeditor/wangEditor.min.js"></script>
+<script type="text/javascript">
+    let E = window.wangEditor,
+        editor = new E('#editor');
+        $text1 = $('#message');
+    editor.customConfig.zIndex = 100;
+    editor.customConfig.onchange = function (html) {
+        $text1.val(html)
+    };
+    editor.customConfig.uploadImgServer = '/upload';
+    editor.create();
+    $text1.val(editor.txt.html())
+</script>
+{/block}

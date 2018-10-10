@@ -1,0 +1,169 @@
+{extend name="common"/}
+{block name="name"}权限菜单列表{/block}
+{block name="content"}
+<section class="am-panel am-panel-default">
+    <div class="am-panel-bd">
+        <div class="am-btn am-btn-primary am-icon-plus am-btn-hollow" onclick="im.modal('#addAuthRule',600)">
+            添加菜单
+        </div>
+    </div>
+    <table class="am-table am-table-striped am-table-hover">
+        <thead>
+        <tr>
+            <th width="40" class="am-text-center">ID</th>
+            <th>名称/地址</th>
+            <th width="60">显示</th>
+            <th width="60">启用</th>
+            <th width="60">快捷</th>
+            <th width="120">排序</th>
+            <th width="320">管理</th>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name="list" id="vo"}
+        <tr>
+            <td class="am-text-center">{$vo.id}</td>
+            <td class="am-table-level-{$vo.level}">
+                <span class="am-icon-fw {$vo.icon}"></span> {$vo.title}
+                <code>{$vo.name}</code></td>
+            <td>
+                <label class="am-switch am-switch-success">
+                    <input type="checkbox" {eq name="vo.display" value="1" }checked{/eq} value="{$vo.display}">
+                    <span class="am-switch-checkbox"
+                          onclick="im.get('{:url('set_auth_rule')}',{id:{$vo.id},st:{$vo.display},a:'ds'})"></span>
+                </label>
+            </td>
+
+            <td><label class="am-switch am-switch-success">
+                <input type="checkbox" {eq name="vo.status" value="1" }checked{/eq} value="{$vo.status}">
+                <span class="am-switch-checkbox"
+                      onclick="im.get('{:url('set_auth_rule')}',{id:{$vo.id},st:{$vo.status},a:'s'})"></span>
+            </label></td>
+            <td><label class="am-switch am-switch-success">
+                <input type="checkbox" {eq name="vo.is_common" value="1" }checked{/eq} value="{$vo.is_common}">
+                <span class="am-switch-checkbox"
+                      onclick="im.get('{:url('set_auth_rule')}',{id:{$vo.id},st:{$vo.is_common},a:'com'})"></span>
+            </label></td>
+            <td>
+                <div class="am-input-group am-input-group-sm">
+                    <input type="text" class="am-form-field" name="{$vo.id}" value="{$vo.order}">
+                    <span class="am-input-group-btn">
+                    <button class="am-btn am-btn-default am-icon-check" onclick="setOrder({$vo.id})" type="button"></button>
+                  </span>
+                </div>
+            </td>
+            <td>
+                <div class="am-btn-group am-btn-group-sm">
+                    <a href="{:url('ed_auth_rule',['id'=>$vo['id']])}"
+                       class="am-btn am-btn-default am-icon-pencil"> 编辑</a>
+                    <span onclick="pidRules({$vo.id})"
+                          class="am-btn am-btn-default am-icon-level-down"> 子菜单</span>
+                    <span onclick="im.setDelData({$vo.id},'#delAuthRule')"
+                          class="am-btn am-btn-default am-icon-trash-o"> 删除</span>
+                </div>
+            </td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+</section>
+{/block}
+{block name="modal"}
+<div class="am-modal am-modal-confirm" tabindex="-1" id="addAuthRule">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">
+            <span class="am-icon-plus"></span>
+            添加系统控制菜单
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            <form action="{:url('add_auth_rule')}" role="form" id="addAuthItem" class="am-form am-form-horizontal">
+                <input type="hidden" name="pid" value="0">
+                <!-- form 结合 grid 使用 -->
+                <div class="am-form-group">
+                    <label for="title" class="am-u-sm-2 am-form-label">菜单名称</label>
+                    <div class="am-u-sm-6 am-u-end">
+                        <input type="text" name="title" id="title" placeholder="输入菜单名称" required/>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label for="name" class="am-u-sm-2 am-form-label">菜单URL</label>
+                    <div class="am-u-sm-10">
+                        <input type="text" name="name" id="name" placeholder="输入菜单URL，模块/控制器/方法，如：admin/config/auth"
+                               required/>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label for="icon" class="am-u-sm-2 am-form-label">菜单图标</label>
+                    <div class="am-u-sm-7 am-u-end">
+                        <input type="text" name="icon" id="icon" placeholder="输入菜单图标，直接复制amazeui图标，如 am-icon-plus"/>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label for="display" class="am-u-sm-2 am-form-label">是否显示</label>
+                    <div class="am-u-sm-6 am-u-end">
+                        <label class="am-switch">
+                            <input type="checkbox" id="display" name="display" value="1" checked>
+                            <span class="am-switch-checkbox"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label for="status" class="am-u-sm-2 am-form-label">是否启用</label>
+                    <div class="am-u-sm-6 am-u-end">
+                        <label class="am-switch">
+                            <input type="checkbox" id="status" name="status" value="1" checked>
+                            <span class="am-switch-checkbox"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label for="order" class="am-u-sm-2 am-form-label">排序</label>
+                    <div class="am-u-sm-5 am-u-end">
+                        <input type="number" name="order" id="order" placeholder="数字越大越靠前"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <button type="button" class="am-btn am-modal-btn am-btn-default am-btn-hollow"
+                    data-am-modal-cancel>取消
+            </button>
+            <button type="button" class="am-btn am-modal-btn am-btn-primary am-icon-check"
+                    onclick="im.submit('#addAuthItem',this)" data-am-modal-confirm> 确定
+            </button>
+        </div>
+    </div>
+</div>
+<div class="am-modal am-modal-confirm" tabindex="-1" id="delAuthRule">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">
+            <span class="am-icon-plus"></span>
+            删除确认
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">您将删除选中菜单，请谨慎操作，此删除不可逆！</div>
+        <div class="am-modal-footer">
+            <button type="button" class="am-btn am-modal-btn am-btn-default am-btn-hollow"
+                    data-am-modal-cancel>取消
+            </button>
+            <button type="button" class="am-btn am-modal-btn am-btn-primary am-icon-check"
+                    onclick="im.sentDelData(this)" data-url="{:url('del_rule')}" data-am-modal-confirm> 确定
+            </button>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script type="text/javascript">
+    function pidRules(e) {
+        $('[name="pid"]').val(e);
+        im.modal('#addAuthRule', 600);
+    }
+
+    function setOrder(e) {
+        var order = $('[name="' + e + '"]').val();
+        im.get("{:url('set_auth_rule')}", {id: e, st: order, a: 'order'});
+    }
+</script>
+{/block}

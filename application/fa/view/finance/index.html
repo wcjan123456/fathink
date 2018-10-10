@@ -1,0 +1,127 @@
+{extend name="common"/}
+{block name="breadcrumb"}
+<li><a href="{:url('finance/index')}">财务管理</a></li>
+<li>收支列表</li>
+{/block}
+{block name="name"}收支记录{/block}
+{block name="content"}
+<div class="am-panel am-panel-default">
+    <div class="am-panel-bd">
+        <div class="am-g">
+            <div class="am-u-sm-6 am-padding-left-0">
+                <a href="{:url('create_item')}"
+                   class="am-btn am-btn-primary am-icon-plus am-btn-hollow"> 添加记录</a>
+            </div>
+            <div class="am-u-sm-6 am-text-right">
+                <form class="am-form am-form-inline am-fr">
+                    <div class="am-form-group">
+                        <div class="am-dropdown" data-am-dropdown>
+                            <button class="am-btn am-btn-default am-dropdown-toggle"
+                                    data-am-dropdown-toggle>时间 <span class="am-icon-caret-down"></span>
+                            </button>
+                            <ul class="am-dropdown-content">
+                                <li><a href="">全部</a></li>
+                                <li><a href="">本月</a></li>
+                                <li><a href="">三个月</a></li>
+                                <li><a href="">半年</a></li>
+                                <li><a href="">一年</a></li>
+                                <li><a href="">三年</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <input type="text" name="subject"
+                               class="am-input-sm" placeholder="输入收支记录搜索">
+                    </div>
+                    <button type="submit" class="am-btn am-btn-default">
+                        <span class="am-icon-search"></span> 搜索</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <table class="am-table">
+        <colgroup>
+            <col width="50">
+            <col>
+            <col width="300">
+            <col width="150" align="center">
+            <col width="80" align="center">
+            <col width="180">
+        </colgroup>
+        <thead>
+        <tr>
+            <th>类型</th>
+            <th>用途描述</th>
+            <th>项目</th>
+            <th>金额</th>
+            <th>经办人</th>
+            <th>管理</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <span class="am-icon-btn am-success">收</span>
+            </td>
+            <td>
+                <div class="am-text-lg">购买材料</div>
+                <div class="am-text-sm am-text-muted">支付宝支付</div>
+            </td>
+            <td>
+                中梁壹号院喷绘围挡
+            </td>
+            <td class="am-text-success am-text-lg">￥29220.00</td>
+            <td>王斌</td>
+            <td>
+                <div class="am-table-btn">
+                    <a href="{:url('projects/details',['id'=>1])}">详情</a>
+                    <a href="{:url('projects/details',['id'=>1])}">编辑</a>
+                    <a href="{:url('projects/details',['id'=>1])}">删除</a>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="am-icon-btn am-warning">支</span>
+            </td>
+            <td>
+                <div class="am-text-lg">购买材料</div>
+                <div class="am-text-sm am-text-muted">支付宝支付</div>
+            </td>
+            <td>
+                中梁壹号院喷绘围挡
+            </td>
+            <td class="am-text-danger am-text-lg">￥29220.00</td>
+            <td>王斌</td>
+            <td>
+                <div class="am-table-btn">
+                    <a href="{:url('projects/details',['id'=>1])}">详情</a>
+                    <a href="{:url('projects/details',['id'=>1])}">编辑</a>
+                    <a href="{:url('projects/details',['id'=>1])}">删除</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <li>
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+{/block}

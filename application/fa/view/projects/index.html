@@ -1,0 +1,158 @@
+{extend name="common"/}
+{block name="breadcrumb"}
+<li><a href="{:url('projects/index')}">项目管理</a></li>
+<li>项目列表</li>
+{/block}
+{block name="name"}项目列表{/block}
+{block name="content"}
+<div class="am-panel am-panel-default am-panel-ova">
+    <div class="am-panel-bd">
+        <div class="am-cf">
+            <a href="{:url('create_item')}" class="am-btn am-btn-primary am-icon-plus am-btn-hollow"> 添加项目</a>
+            <form class="am-form am-form-inline am-fr">
+                <div class="am-form-group">
+                    <div class="am-dropdown" data-am-dropdown>
+                        <button class="am-btn am-btn-default am-dropdown-toggle"
+                                data-am-dropdown-toggle>状态 <span class="am-icon-caret-down"></span>
+                        </button>
+                        <ul class="am-dropdown-content">
+                            <li><a href="">全部</a></li>
+                            <li><a href="">已接单</a></li>
+                            <li><a href="">设计出图</a></li>
+                            <li><a href="">已出图</a></li>
+                            <li><a href="">制作中</a></li>
+                            <li><a href="">等待施工</a></li>
+                            <li><a href="">施工中</a></li>
+                            <li><a href="">施工完成</a></li>
+                            <li><a href="">等待收款</a></li>
+                            <li><a href="">已完结</a></li>
+                        </ul>
+                    </div>
+                    <div class="am-dropdown" data-am-dropdown>
+                        <button class="am-btn am-btn-default am-dropdown-toggle"
+                                data-am-dropdown-toggle>时间 <span class="am-icon-caret-down"></span>
+                        </button>
+                        <ul class="am-dropdown-content">
+                            <li><a href="">全部</a></li>
+                            <li><a href="">本月</a></li>
+                            <li><a href="">三个月</a></li>
+                            <li><a href="">半年</a></li>
+                            <li><a href="">一年</a></li>
+                            <li><a href="">三年</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="am-form-group" style="width: 100px">
+                    <input type="text" name="start_time"
+                           class="am-input-sm" placeholder="开始日期" data-am-datepicker="">
+                </div>
+                <div class="am-form-group" style="width: 100px">
+                    <input type="text" name="end_time"
+                           class="am-input-sm" placeholder="结束日期" data-am-datepicker="">
+                </div>
+                <div class="am-form-group" style="width: 200px">
+                    <input type="text" name="subject"
+                           class="am-input-sm" placeholder="输入项目名称搜索">
+                </div>
+                <button type="submit" class="am-btn am-btn-default btn-sm">
+                    <span class="am-icon-search"></span> 搜索</button>
+            </form>
+        </div>
+        <table class="am-table am-margin-top-lg am-table-project">
+            <colgroup>
+                <col width="50">
+                <col>
+                <col width="120">
+                <col width="100">
+                <col width="100">
+                <col width="100">
+                <col width="200">
+                <col width="130">
+            </colgroup>
+            <tbody>
+            <tr>
+                <td>
+                    <img width="48" class="am-radius" src="https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png">
+                </td>
+                <td>
+                    <span class="am-text-lg">中梁壹号院工地喷绘围挡</span>
+                    <div class="am-text-muted">喷绘，彩钢瓦围挡 大门包铁皮</div>
+                </td>
+                <td>
+                    <span class="am-text-muted">项目金额</span>
+                    <div class="am-text-danger am-text-lg">￥87450.00</div>
+                </td>
+                <td>
+                    <span class="am-text-muted">项目经理</span>
+                    <div>周杰伦</div>
+                </td>
+                <td>
+                    <span class="am-text-muted">接单时间</span>
+                    <div>2018-09-12</div>
+                </td>
+                <td>
+                    <span class="am-text-muted">完工时间</span>
+                    <div>2018-09-18</div>
+                </td>
+                <td><div data-am-progressbar="{percentage:'20', size: 'sm'}"></div></td>
+                <td>
+                    <div class="am-table-btn">
+                        <a href="{:url('projects/details',['id'=>1])}">详情</a>
+                        <div class="am-dropdown" data-am-dropdown="{trigger: 'hover' }">
+                            <a href="javascript:;" class="am-dropdown-toggle"
+                               data-am-dropdown-toggle>更多 <span class="am-icon-angle-down"></span></a>
+                            <ul class="am-dropdown-content">
+                                <li><a href="">编辑</a></li>
+                                <li><a href="">进度修改</a></li>
+                                <li><a href="">上传设计图</a></li>
+                                <li><a href="">删除</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img width="48" class="am-radius" src="https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png">
+                </td>
+                <td>
+                    <span class="am-text-lg">中梁壹号院工地喷绘围挡</span>
+                    <div class="am-text-muted">喷绘，彩钢瓦围挡 大门包铁皮</div>
+                </td>
+                <td>
+                    <span class="am-text-muted">项目金额</span>
+                    <div class="am-text-danger am-text-lg">￥87450.00</div>
+                </td>
+                <td>
+                    <span class="am-text-muted">项目经理</span>
+                    <div>周杰伦</div>
+                </td>
+                <td>
+                    <span class="am-text-muted">接单时间</span>
+                    <div>2018-09-12 21:30</div>
+                </td>
+                <td>
+                    <span class="am-text-muted">完工时间</span>
+                    <div>2018-09-18 21:30</div>
+                </td>
+                <td><div data-am-progressbar="{percentage:'20', size: 'sm'}"></div></td>
+                <td>
+                    <div class="am-table-btn">
+                        <a href="">详情</a>
+                        <div class="am-dropdown" data-am-dropdown="{trigger: 'hover' }">
+                            <a href="javascript:;" class="am-dropdown-toggle"
+                               data-am-dropdown-toggle>更多 <span class="am-icon-angle-down"></span></a>
+                            <ul class="am-dropdown-content">
+                                <li><a href="">编辑</a></li>
+                                <li><a href="">进度修改</a></li>
+                                <li><a href="">删除</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{/block}

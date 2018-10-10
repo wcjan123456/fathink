@@ -1,0 +1,128 @@
+{extend name="common"/}
+{block name="breadcrumb"}
+<li><a href="{:url('projects/index')}">项目管理</a></li>
+<li>项目详情</li>
+{/block}
+{block name="name"}项目详情{/block}
+{block name="content"}
+<section class="am-panel am-panel-default">
+    <header class="am-panel-hd">
+        <h3 class="am-panel-title">项目信息</h3>
+    </header>
+    <div class="am-panel-bd">
+        <div class="am-g">
+            <div class="am-u-sm-8">
+                <img width="48" class="am-radius am-fl am-margin-right"
+                     src="https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png">
+                <span class="am-text-lg">中梁壹号院工地喷绘围挡</span>
+                <div class="am-text-muted">喷绘，彩钢瓦围挡 大门包铁皮</div>
+            </div>
+            <div class="am-u-sm-4 am-text-right">
+                <span class="am-btn am-btn-sm am-btn-primary">添加制作清单</span>
+                <span class="am-btn am-btn-sm am-btn-success">添加收支记录</span>
+                <div class="am-btn-group am-btn-group-sm">
+                    <button type="button" class="am-btn am-btn-default">编辑</button>
+                    <button type="button" class="am-btn am-btn-default">进度修改</button>
+                    <button type="button" class="am-btn am-btn-default">删除</button>
+                </div>
+            </div>
+        </div>
+        <div class="am-g am-border-top am-margin-top-xl am-padding-top">
+            <div class="am-u-sm-4">
+                <p>项目经理：xxx</p>
+                <p>接单时间：2018年9月13日</p>
+                <p>完成时间：2018年9月20日</p>
+            </div>
+            <div class="am-u-sm-4">
+                <p>甲方：重庆贵华建筑有限公司</p>
+                <p>甲方负责人：罗xxx</p>
+                <p>联系方式：1802500154</p>
+            </div>
+            <div class="am-u-sm-2 am-text-right">
+                <span class="am-text-muted">状态</span>
+                <p>施工已完成</p>
+            </div>
+            <div class="am-u-sm-2 am-text-right">
+                <span class="am-text-muted">合同金额</span>
+                <p class="am-text-xl am-text-danger">￥22338.88</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="am-panel am-panel-default">
+    <header class="am-panel-hd">
+        <h3 class="am-panel-title">项目进度</h3>
+    </header>
+    <div class="am-panel-bd">
+        <div class="am-project-progress">
+        <div class="am-project-bar">
+            <div class="am-project-bar-line am-percent-8"></div>
+        </div>
+        <ul class="am-avg-sm-10">
+            <li class="am-active">未开始</li>
+            <li class="am-active">已接单</li>
+            <li class="am-active">设计出图</li>
+            <li class="am-active">已出图</li>
+            <li class="am-active">制作中</li>
+            <li class="am-active">等待施工</li>
+            <li class="am-active">施工中</li>
+            <li class="am-active">施工完成</li>
+            <li>等待收款</li>
+            <li>已完结</li>
+        </ul>
+        </div>
+    </div>
+</section>
+<section class="am-panel am-panel-default">
+    <div class="am-panel-bd">
+        <div class="am-tabs" data-am-tabs="{noSwipe: 1}">
+            <ul class="am-tabs-nav am-nav am-nav-tabs">
+                <li class="am-active"><a href="javascript: void(0)">制作清单</a></li>
+                <li><a href="javascript: void(0)">收支记录</a></li>
+                <li><a href="javascript: void(0)">工时管理</a></li>
+            </ul>
+            <div class="am-tabs-bd">
+                <div class="am-tab-panel am-in am-active" id="tab2-1">
+                    <table class="am-table">
+                        <thead>
+                        <tr>
+                            <th width="60">序号</th>
+                            <th>项目</th>
+                            <th>材料</th>
+                            <th width="120">规格尺寸</th>
+                            <th width="60">数量</th>
+                            <th width="100">面积</th>
+                            <th width="60">单价</th>
+                            <th width="150">总价</th>
+                            <th width="120">管理</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>围挡</td>
+                            <td>彩钢瓦+钢架喷绘</td>
+                            <td>61*2.5m</td>
+                            <td>1</td>
+                            <td>152.5</td>
+                            <td>105</td>
+                            <td>16012.50</td>
+                            <td>
+                                <div class="am-table-btn">
+                                    <a href="{:url('projects/details',['id'=>1])}">编辑</a>
+                                    <a href="{:url('projects/details',['id'=>1])}">删除</a>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="am-tab-panel " id="tab2-2">
+                    大江东去<br>浪淘尽<br>千古风流人物<br>故垒西边<br>人道是<br>三国周郎赤壁<br>恨乱石穿空<br>惊涛拍岸<br>卷起千堆雪<br>江山如画<br>一时多少豪杰
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{/block}

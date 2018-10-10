@@ -1,0 +1,90 @@
+{extend name="common"/}
+{block name="content"}
+<section class="am-panel am-panel-default">
+    <header class="am-panel-hd">
+        <h3 class="am-panel-title">编辑菜单</h3>
+    </header>
+    <div class="am-panel-bd">
+        <form action="{:url('ed_auth_rule_action')}" role="form" id="edAuthRule" class="am-form am-form-horizontal">
+            <input type="hidden" name="id" value="{$data.id}">
+            <!-- form 结合 grid 使用 -->
+            <div class="am-form-group">
+                <label for="title" class="am-u-sm-2 am-form-label">菜单名称</label>
+                <div class="am-u-sm-6 am-u-end">
+                    <input type="text" name="title" id="title" placeholder="输入菜单名称" value="{$data.title}" required/>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="pid" class="am-u-sm-2 am-form-label">上级菜单</label>
+                <div class="am-u-sm-3 am-u-end">
+                    <select name="pid" id="pid">
+                        <option value="0">一级菜单</option>
+                        {volist name="rules" id="vo"}
+                        <option value="{$vo.id}" {eq name="vo.id" value="$data.pid"}selected{/eq}>
+                        {switch name="vo.level" }{case value="2"}├─{/case}{case value="3"}&nbsp;&nbsp;└─{/case}{/switch}
+                        {$vo.title}
+                        </option>
+                        {/volist}
+                    </select>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="name" class="am-u-sm-2 am-form-label">菜单URL</label>
+                <div class="am-u-sm-6 am-u-end">
+                    <input type="text" name="name" id="name" value="{$data.name}"
+                           placeholder="输入菜单URL，模块/控制器/方法，如：admin/config/auth" required/>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="icon" class="am-u-sm-2 am-form-label">菜单图标</label>
+                <div class="am-u-sm-2 am-u-end">
+                    <input type="text" name="icon" id="icon" value="{$data.icon}"
+                           placeholder="输入菜单图标，直接复制amazeui图标，如 am-icon-plus"/>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="display" class="am-u-sm-2 am-form-label">是否显示</label>
+                <div class="am-u-sm-6 am-u-end">
+                    <label class="am-switch">
+                        <input type="checkbox" id="display" name="display" value="1" {eq name="data.display" value="1"
+                               }checked{/eq}>
+                        <span class="am-switch-checkbox"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="status" class="am-u-sm-2 am-form-label">是否启用</label>
+                <div class="am-u-sm-6 am-u-end">
+                    <label class="am-switch">
+                        <input type="checkbox" id="status" name="status" value="1" {eq name="data.status" value="1"
+                               }checked{/eq}>
+                        <span class="am-switch-checkbox"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="type" class="am-u-sm-2 am-form-label">菜单分类</label>
+                <div class="am-u-sm-3 am-u-end">
+                    <select name="type" id="type" data-am-selected>
+                        <option value="1" {eq name="data.type" value="1" }selected{
+                        /eq}>普通管理端/mp</option>
+                        <option value="2" {eq name="data.type" value="2" }selected{
+                        /eq}>高级管理端/smp</option>
+                        <option value="3" {eq name="data.type" value="3" }selected{
+                        /eq}>前台菜单/portal/forum</option>
+                    </select>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="order" class="am-u-sm-2 am-form-label">排序</label>
+                <div class="am-u-sm-2 am-u-end">
+                    <input type="number" name="order" value="{$data.order}" id="order" placeholder="数字越大越靠前"/>
+                </div>
+            </div>
+            <div class="am-u-sm-offset-2 am-margin-bottom">
+                <div class="am-btn am-btn-primary am-icon-check" onclick="im.submit('#edAuthRule',this)"> 确认修改</div>
+            </div>
+        </form>
+    </div>
+</section>
+{/block}

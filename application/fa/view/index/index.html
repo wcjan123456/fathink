@@ -1,0 +1,224 @@
+{extend name="common"/}
+{block name="name"}控制台概述{/block}
+{block name="content"}
+<div class="am-g am-space-rem">
+    <div class="am-u-sm-8">
+        <div class="am-panel am-panel-default">
+            <div class="am-panel-hd"><span class="am-icon-line-chart"></span> 数据概览</div>
+            <div class="am-panel-bd">
+                <ul class="am-avg-sm-4 am-text-center data-avg-grid">
+                    <li>
+                        <div class="data-box">
+                        <div>本月收入/支出</div>
+                        <div class="am-text-danger am-text-xl">0220</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="data-box">
+                        <div>季度收入/支出</div>
+                        <div class="am-text-danger am-text-xl">0220</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="data-box">
+                        <div>年度收入/支出</div>
+                        <div class="am-text-danger am-text-xl">0220</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="data-box">
+                        <div>总收入/支出</div>
+                        <div class="am-text-danger am-text-xl">0220</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="data-box">
+                        <div>本月项目</div>
+                        <div class="am-text-danger am-text-xl">0220</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="data-box">
+                        <div>季度项目</div>
+                        <div class="am-text-danger am-text-xl">0220</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="data-box">
+                        <div>年度项目</div>
+                        <div class="am-text-danger am-text-xl">0220</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="data-box">
+                        <div>项目总数</div>
+                        <div class="am-text-danger am-text-xl">0220</div>
+                        </div>
+                    </li>
+                </ul>
+                <hr>
+                <div id="financeViews" style="height: 280px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="am-u-sm-4">
+        <div class="am-panel am-panel-default">
+            <div class="am-panel-hd"><span class="am-icon-map-signs"></span> 快捷操作</div>
+            <div class="am-panel-bd">
+                <a href="" class="am-btn am-btn-default">新建项目</a>
+                <a href="" class="am-btn am-btn-default">添加收支</a>
+                <a href="" class="am-btn am-btn-default">添加清单</a>
+                <a href="" class="am-btn am-btn-default">工时管理</a>
+                <a href="" class="am-btn am-btn-default">添加员工</a>
+            </div>
+        </div>
+        <div class="am-panel am-panel-default">
+            <div class="am-panel-hd"><span class="am-icon-tasks"></span> 待办事项</div>
+            <div class="am-panel-bd">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="am-g am-space-rem">
+    <div class="am-u-sm-6">
+        <div class="am-panel am-panel-default">
+            <div class="am-panel-hd"><span class="am-icon-bullhorn"></span> 项目动态</div>
+            <div class="am-panel-bd">
+                <table class="am-table am-margin-top-lg am-table-project">
+                    <colgroup>
+                        <col width="50">
+                        <col>
+                        <col width="120">
+                        <col width="200">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <img width="48" class="am-radius" src="https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png">
+                        </td>
+                        <td>
+                            <span class="am-text-lg">中梁壹号院工地喷绘围挡</span>
+                            <div class="am-text-muted">喷绘，彩钢瓦围挡 大门包铁皮</div>
+                        </td>
+                        <td>
+                            <span class="am-text-muted">项目金额</span>
+                            <div class="am-text-danger am-text-lg">￥87450.00</div>
+                        </td>
+                        <td><div data-am-progressbar="{percentage:'20', size: 'sm'}"></div></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img width="48" class="am-radius" src="https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png">
+                        </td>
+                        <td>
+                            <span class="am-text-lg">中梁壹号院工地喷绘围挡</span>
+                            <div class="am-text-muted">喷绘，彩钢瓦围挡 大门包铁皮</div>
+                        </td>
+                        <td>
+                            <span class="am-text-muted">项目金额</span>
+                            <div class="am-text-danger am-text-lg">￥87450.00</div>
+                        </td>
+                        <td><div data-am-progressbar="{percentage:'20', size: 'sm'}"></div></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="am-u-sm-6">
+        <div class="am-panel am-panel-default">
+            <div class="am-panel-hd">收支动态</div>
+            <div class="am-panel-bd">
+                Panel content
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script type="text/javascript" src="/static/js/echarts.min.js"></script>
+<script type="text/javascript">
+    let dom = document.getElementById("financeViews");
+    let myChart = echarts.init(dom);
+    let app = {};
+    option = null;
+    option = {
+        color:['#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3'],
+        tooltip : {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                }
+            }
+        },
+        legend: {
+            data:['收入','支出','盈利','项目']
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        grid: {
+            left: '2%',
+            right: '2%',
+            bottom: '3%',
+            top:'15%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value',
+                name:'元'
+            }
+        ],
+        series : [
+            {
+                name:'收入',
+                type:'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data:[320, 5800, 301, 334,4200, 330, 26000,3600,5820,15200,25800,8900],
+                smooth:true
+            },
+            {
+                name:'支出',
+                type:'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data:[820, 7200, 901, 11400, 1290, 1330, 1320,5822,9800,4500,1200,5800],
+                smooth:true
+            },
+            {
+                name:'盈利',
+                type:'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data:[500, 2600, 600, 11000, -2500, 1330, 1320,25800,2588,2555,3800,2566],
+                smooth:true
+            },
+            {
+                name:'项目',
+                type:'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data:[12, 32, 11, 34, 9, 23, 21,25,12,5,8,15],
+                smooth:true
+            }
+        ]
+    };
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+</script>
+{/block}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>项目管理系统-FaThink</title>
+    <link rel="stylesheet" href="/static/css/e356600b3a5de3c6cb1dbb02ef014f78.css">
+    <link rel="stylesheet" href="/static/css/fa.css">
+    {block name="css"}{/block}
+</head>
+<body>
+<header class="am-topbar am-topbar-fixed-top">
+    <ul class="am-nav am-nav-pills am-topbar-nav">
+        <li>
+            <a href="javascript:;" onclick="hideAside()" class="am-icon-outdent am-text-lg"></a>
+        </li>
+    </ul>
+    <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right">
+        <li><a href="javascript:im.clearCache();" class="am-icon-refresh"></a></li>
+        <li><a href="#" class="am-icon-bell-o"></a></li>
+        <li class="am-dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+               aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+            <ul class="am-dropdown-content">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </li>
+    </ul>
+</header>
+<aside class="aside">
+    <h1 class="am-aside-brand">
+        <a  href="/fa?position=topbrand">FaThink</a>
+    </h1>
+    <ul class="am-list aside-nav" id="asideNav">
+        {volist name="menus" id="vo"}
+        {empty name="vo.child"}
+        <li><a href="{$vo.name|url}"><span class="am-icon-fw {$vo.icon}"></span> {$vo.title}</a></li>
+        {else/}
+        <li class="am-panel">
+            <a data-am-collapse="{parent: '#asideNav', target: '#nav-{$vo.id}'}">
+                <span class="{$vo.icon} am-icon-fw"></span> {$vo.title}
+                <i class="am-icon-angle-down"></i>
+            </a>
+            <ul class="am-list am-collapse" id="nav-{$vo.id}">
+                {volist name="vo.child" id="v"}
+                <li><a href="{$v.name|url}">
+                    <span class="am-icon-fw {$v.icon}"></span> {$v.title}</a></li>
+                {/volist}
+            </ul>
+        </li>
+        {/empty}
+        {/volist}
+    </ul>
+</aside>
+<div class="main">
+    <section class="am-page-header">
+        <ol class="am-breadcrumb am-breadcrumb-slash">
+            <li><a href="{:url('index/index')}" class="am-icon-dashboard"> 控制台概述</a></li>
+            {block name="breadcrumb"}{/block}
+        </ol>
+        <h3 class="am-page-name">{block name="name"}{/block}</h3>
+    </section>
+    <div class="am-padding-horizontal">
+        {block name="content"}{/block}
+    </div>
+    <footer class="am-padding-vertical-xl am-text-center">
+        &copy;ThinkFina By imdante
+    </footer>
+</div>
+{block name="modal"}{/block}
+<div class="am-alert-group">
+    <div class="am-alert am-alert-danger am-animation-slide-top"></div>
+    <div class="am-alert am-alert-warning am-animation-slide-top"></div>
+    <div class="am-alert am-alert-success am-animation-slide-top"></div>
+    <div class="am-alert am-alert-notice am-animation-slide-top"></div>
+</div>
+<script src="/static/js/jquery-1.12.4.min.js"></script>
+<script src="/static/js/amazeui.min.js"></script>
+<script>let atoken= "{:staticVersion()}"</script>
+<script src="/static/js/fa.js"></script>
+{block name="js"}{/block}
+</body>
+</html>
