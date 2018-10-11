@@ -12,10 +12,10 @@ return [
     ],
     //项目紧急程度配置
     'projectLevel'=>[
-        ['level'=>1,'level_name'=>'非常紧急'],
-        ['level'=>2,'level_name'=>'紧急'],
-        ['level'=>3,'level_name'=>'一般'],
-        ['level'=>4,'level_name'=>'可延后'],
+        ['level'=>1,'level_name'=>'非常紧急','color_style'=>'am-danger'],
+        ['level'=>2,'level_name'=>'紧急','color_style'=>'am-warning'],
+        ['level'=>3,'level_name'=>'一般','color_style'=>'am-primary'],
+        ['level'=>4,'level_name'=>'可延后','color_style'=>'am-success'],
     ],
     //项目状态对照表
     'projectStatus'=>[

@@ -10,7 +10,7 @@ Target Server Type    : MariaDB
 Target Server Version : 100310
 File Encoding         : 65001
 
-Date: 2018-10-10 17:58:08
+Date: 2018-10-11 17:58:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,7 @@ CREATE TABLE `raw_authorize` (
   `order` int(11) DEFAULT 0,
   `status` int(11) DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of raw_authorize
@@ -40,7 +40,7 @@ INSERT INTO `raw_authorize` VALUES ('2', '0', '项目管理', 'fa/projects', 'am
 INSERT INTO `raw_authorize` VALUES ('3', '2', '项目列表', 'fa/projects/index', 'am-icon-tasks', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('4', '2', '项目报表', 'fa/projects/report', 'am-icon-bar-chart', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('5', '0', '财务管理', 'fa/finance', 'am-icon-paypal', '1', '0', '0', '1');
-INSERT INTO `raw_authorize` VALUES ('6', '5', '收支记录', 'fa/finance/index', 'am-icon-list-ul', '1', '0', '0', '1');
+INSERT INTO `raw_authorize` VALUES ('6', '5', '收支记录', 'fa/finance/index', 'am-icon-list-ul', '1', '0', '5', '1');
 INSERT INTO `raw_authorize` VALUES ('7', '5', '工时管理', 'fa/finance/man_hour', 'am-icon-coffee', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('8', '5', '资金流', 'fa/finance/management', 'am-icon-btc', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('9', '5', '财务报表', 'fa/finance/statements', 'am-icon-bar-chart', '1', '0', '0', '1');
@@ -55,6 +55,7 @@ INSERT INTO `raw_authorize` VALUES ('17', '14', '管理组', 'fa/authorize/group
 INSERT INTO `raw_authorize` VALUES ('18', '14', '管理日志', 'fa/authorize/index', 'am-icon-file-text-o', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('19', '10', '部门设置', 'fa/member/department', 'am-icon-home', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('20', '10', '员工列表', 'fa/member/index', 'am-icon-list', '1', '0', '1', '1');
+INSERT INTO `raw_authorize` VALUES ('21', '5', '工资表', 'fa/finance/wages', 'am-icon-table', '1', '0', '3', '1');
 
 -- ----------------------------
 -- Table structure for raw_authorize_group

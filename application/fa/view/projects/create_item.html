@@ -100,15 +100,9 @@
                 <label class="am-u-sm-2 am-form-label">项目状态</label>
                 <div class="am-u-sm-2">
                     <select name="status" data-am-selected="{dropUp: 1}">
-                        <option value="1">已接单</option>
-                        <option value="2">设计出图</option>
-                        <option value="3">已出图</option>
-                        <option value="4">制作中</option>
-                        <option value="5">等待施工</option>
-                        <option value="6">施工中</option>
-                        <option value="7">施工完成</option>
-                        <option value="8">等待收款</option>
-                        <option value="9">已完结</option>
+                        {volist name="status" id="vo"}
+                        <option value="{$vo.status}">{$vo.status_name}</option>
+                        {/volist}
                     </select>
                 </div>
             </div>

@@ -13,42 +13,28 @@
                 <div class="am-form-group">
                     <div class="am-dropdown" data-am-dropdown>
                         <button class="am-btn am-btn-default am-dropdown-toggle"
-                                data-am-dropdown-toggle>状态 <span class="am-icon-caret-down"></span>
+                                data-am-dropdown-toggle>项目状态 <span class="am-icon-caret-down"></span>
                         </button>
                         <ul class="am-dropdown-content">
-                            <li><a href="">全部</a></li>
-                            <li><a href="">已接单</a></li>
-                            <li><a href="">设计出图</a></li>
-                            <li><a href="">已出图</a></li>
-                            <li><a href="">制作中</a></li>
-                            <li><a href="">等待施工</a></li>
-                            <li><a href="">施工中</a></li>
-                            <li><a href="">施工完成</a></li>
-                            <li><a href="">等待收款</a></li>
-                            <li><a href="">已完结</a></li>
+                            <li><a href="{:url('index')}?interval={$interval}&status">全部</a></li>
+                           {volist name="status" id="vo"}
+                           <li><a href="{:url('index')}?status={$vo.status}&interval={$interval}">{$vo.status_name}</a></li>
+                           {/volist}
                         </ul>
                     </div>
                     <div class="am-dropdown" data-am-dropdown>
                         <button class="am-btn am-btn-default am-dropdown-toggle"
-                                data-am-dropdown-toggle>时间 <span class="am-icon-caret-down"></span>
+                                data-am-dropdown-toggle>时间区间 <span class="am-icon-caret-down"></span>
                         </button>
                         <ul class="am-dropdown-content">
-                            <li><a href="">全部</a></li>
-                            <li><a href="">本月</a></li>
-                            <li><a href="">三个月</a></li>
-                            <li><a href="">半年</a></li>
-                            <li><a href="">一年</a></li>
-                            <li><a href="">三年</a></li>
+                            <li><a href="{:url('index')}?status={$getStatus}&interval">全部</a></li>
+                            <li><a href="{:url('index')}?status={$getStatus}&interval=1">最近一个月</a></li>
+                            <li><a href="{:url('index')}?status={$getStatus}&interval=3">最近三个月</a></li>
+                            <li><a href="{:url('index')}?status={$getStatus}&interval=6">最近半年</a></li>
+                            <li><a href="{:url('index')}?status={$getStatus}&interval=12">最近一年</a></li>
+                            <li><a href="{:url('index')}?status={$getStatus}&interval=36">三年</a></li>
                         </ul>
                     </div>
-                </div>
-                <div class="am-form-group" style="width: 100px">
-                    <input type="text" name="start_time"
-                           class="am-input-sm" placeholder="开始日期" data-am-datepicker="">
-                </div>
-                <div class="am-form-group" style="width: 100px">
-                    <input type="text" name="end_time"
-                           class="am-input-sm" placeholder="结束日期" data-am-datepicker="">
                 </div>
                 <div class="am-form-group" style="width: 200px">
                     <input type="text" name="subject"
@@ -70,89 +56,106 @@
                 <col width="130">
             </colgroup>
             <tbody>
+            {volist name="list" id="vo"}
             <tr>
                 <td>
-                    <img width="48" class="am-radius" src="https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png">
+                    <div class="am-icon-btn am-radius {$vo.levelValue['color_style']}">{$vo.subject|mbs=1}</div>
                 </td>
                 <td>
-                    <span class="am-text-lg">中梁壹号院工地喷绘围挡</span>
-                    <div class="am-text-muted">喷绘，彩钢瓦围挡 大门包铁皮</div>
+                    <span class="am-text-lg">{$vo.subject}</span>
+                    <div class="am-text-muted">{$vo.message|html_entity_decode|strip_tags}</div>
                 </td>
                 <td>
                     <span class="am-text-muted">项目金额</span>
-                    <div class="am-text-danger am-text-lg">￥87450.00</div>
+                    <div class="am-text-danger am-text-lg">￥{$vo.price}</div>
                 </td>
                 <td>
                     <span class="am-text-muted">项目经理</span>
-                    <div>周杰伦</div>
+                    <div>{$vo.username}</div>
                 </td>
                 <td>
                     <span class="am-text-muted">接单时间</span>
-                    <div>2018-09-12</div>
+                    <div>{$vo.dateline|date='Y-m-d'}</div>
                 </td>
                 <td>
                     <span class="am-text-muted">完工时间</span>
-                    <div>2018-09-18</div>
+                    <div>{$vo.end_time|date='Y-m-d'}</div>
                 </td>
-                <td><div data-am-progressbar="{percentage:'20', size: 'sm'}"></div></td>
+                <td>
+                    <div>{$vo.statusValue['status_name']}</div>
+                    <div data-am-progressbar="{percentage:'{$vo.percentage}', size: 'sm'}"></div>
+                </td>
                 <td>
                     <div class="am-table-btn">
-                        <a href="{:url('projects/details',['id'=>1])}">详情</a>
+                        <a href="{:url('projects/details',['id'=>$vo['id']])}">详情</a>
                         <div class="am-dropdown" data-am-dropdown="{trigger: 'hover' }">
                             <a href="javascript:;" class="am-dropdown-toggle"
                                data-am-dropdown-toggle>更多 <span class="am-icon-angle-down"></span></a>
                             <ul class="am-dropdown-content">
-                                <li><a href="">编辑</a></li>
-                                <li><a href="">进度修改</a></li>
-                                <li><a href="">上传设计图</a></li>
-                                <li><a href="">删除</a></li>
+                                <li><a href="{:url('ed_project',['id'=>$vo['id']])}" class="am-icon-pencil"> 编辑</a></li>
+                                <li><a href="javascript:;" onclick="edStatus({$vo.id},{$vo.status})" class="am-icon-refresh"> 进度修改</a></li>
+                                <li><a href="{:url('project_upload_design',['id'=>$vo['id']])}" class="am-icon-cloud-upload"> 上传设计图</a></li>
+                                <li><a href="javascript:;" onclick="delProject({$vo.id})" class="am-icon-trash-o"> 删除</a></li>
                             </ul>
                         </div>
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <img width="48" class="am-radius" src="https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png">
-                </td>
-                <td>
-                    <span class="am-text-lg">中梁壹号院工地喷绘围挡</span>
-                    <div class="am-text-muted">喷绘，彩钢瓦围挡 大门包铁皮</div>
-                </td>
-                <td>
-                    <span class="am-text-muted">项目金额</span>
-                    <div class="am-text-danger am-text-lg">￥87450.00</div>
-                </td>
-                <td>
-                    <span class="am-text-muted">项目经理</span>
-                    <div>周杰伦</div>
-                </td>
-                <td>
-                    <span class="am-text-muted">接单时间</span>
-                    <div>2018-09-12 21:30</div>
-                </td>
-                <td>
-                    <span class="am-text-muted">完工时间</span>
-                    <div>2018-09-18 21:30</div>
-                </td>
-                <td><div data-am-progressbar="{percentage:'20', size: 'sm'}"></div></td>
-                <td>
-                    <div class="am-table-btn">
-                        <a href="">详情</a>
-                        <div class="am-dropdown" data-am-dropdown="{trigger: 'hover' }">
-                            <a href="javascript:;" class="am-dropdown-toggle"
-                               data-am-dropdown-toggle>更多 <span class="am-icon-angle-down"></span></a>
-                            <ul class="am-dropdown-content">
-                                <li><a href="">编辑</a></li>
-                                <li><a href="">进度修改</a></li>
-                                <li><a href="">删除</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+            {/volist}
             </tbody>
         </table>
     </div>
 </div>
+{$list->render()|raw}
+{/block}
+{block name="modal"}
+<div class="am-modal am-modal-confirm" tabindex="-1" id="edStatus">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">项目进度修改</div>
+        <div class="am-modal-bd">
+            <form action="{:url('ed_project_status')}" method="POST" id="eps-01" role="form" class="am-form">
+                <input type="hidden" name="id" value="">
+                <div class="am-form-group">
+                    <select name="status" id="eps-select" data-am-selected="{btnWidth:'100%',maxHeight:'100px'}">
+                        {volist name="status" id="vo"}
+                        <option value="{$vo.status}">{$vo.status_name}</option>
+                        {/volist}
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn am-btn am-btn-default" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn am-btn am-btn-primary" onclick="im.submit('#eps-01',this)" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+<div class="am-modal am-modal-confirm" tabindex="-1" id="del">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">删除项目确认</div>
+        <div class="am-modal-bd">
+            你将删除选中项目，请谨慎操作，此操作不可逆
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn am-btn am-btn-default" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn am-btn am-btn-primary" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script>
+    function edStatus(e,s){
+        let m = $('#edStatus');
+        m.find('[name="id"]').val(e);
+        $("#eps-select").find("option[text='"+s+"']").attr("selected",true);
+        im.modal('#edStatus');
+
+    }
+    function delProject(e){
+        let u = "{:url('del_project')}?id="+e;
+        $('#del').find('[data-am-modal-confirm]').attr('onclick',"im.get('"+u+"')");
+        im.modal('#del');
+    }
+</script>
 {/block}
