@@ -10,7 +10,7 @@ Target Server Type    : MariaDB
 Target Server Version : 100310
 File Encoding         : 65001
 
-Date: 2018-10-11 17:58:09
+Date: 2018-10-12 18:15:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,25 +37,25 @@ CREATE TABLE `raw_authorize` (
 -- ----------------------------
 INSERT INTO `raw_authorize` VALUES ('1', '0', '首页概述', 'fa/index/index', 'am-icon-dashboard', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('2', '0', '项目管理', 'fa/projects', 'am-icon-tasks', '1', '0', '0', '1');
-INSERT INTO `raw_authorize` VALUES ('3', '2', '项目列表', 'fa/projects/index', 'am-icon-tasks', '1', '0', '0', '1');
+INSERT INTO `raw_authorize` VALUES ('3', '2', '项目列表', 'fa/projects/index', 'am-icon-tasks', '1', '1', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('4', '2', '项目报表', 'fa/projects/report', 'am-icon-bar-chart', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('5', '0', '财务管理', 'fa/finance', 'am-icon-paypal', '1', '0', '0', '1');
-INSERT INTO `raw_authorize` VALUES ('6', '5', '收支记录', 'fa/finance/index', 'am-icon-list-ul', '1', '0', '5', '1');
+INSERT INTO `raw_authorize` VALUES ('6', '5', '收支记录', 'fa/finance/index', 'am-icon-list-ul', '1', '1', '5', '1');
 INSERT INTO `raw_authorize` VALUES ('7', '5', '工时管理', 'fa/finance/man_hour', 'am-icon-coffee', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('8', '5', '资金流', 'fa/finance/management', 'am-icon-btc', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('9', '5', '财务报表', 'fa/finance/statements', 'am-icon-bar-chart', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('10', '0', '部门管理', 'fa/member', 'am-icon-graduation-cap', '1', '0', '0', '1');
-INSERT INTO `raw_authorize` VALUES ('11', '0', '客户关系', 'fa/member/index', 'am-icon-sitemap', '1', '0', '0', '1');
-INSERT INTO `raw_authorize` VALUES ('12', '0', '报价管理', 'fa/member/index', 'am-icon-rocket', '1', '0', '0', '1');
-INSERT INTO `raw_authorize` VALUES ('13', '0', '文档管理', 'fa/documents/index', 'am-icon-folder-open-o', '1', '0', '0', '1');
+INSERT INTO `raw_authorize` VALUES ('11', '0', '客户关系', 'fa/member/index', 'am-icon-sitemap', '1', '1', '0', '1');
+INSERT INTO `raw_authorize` VALUES ('12', '0', '报价管理', 'fa/member/index', 'am-icon-rocket', '1', '1', '0', '1');
+INSERT INTO `raw_authorize` VALUES ('13', '0', '文档管理', 'fa/documents', 'am-icon-folder-open-o', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('14', '0', '权限管理', 'fa/authorize', 'am-icon-sliders', '1', '0', '0', '1');
-INSERT INTO `raw_authorize` VALUES ('15', '0', '系统设置', 'fa/settings/index', 'am-icon-cogs', '1', '0', '0', '1');
+INSERT INTO `raw_authorize` VALUES ('15', '0', '全局设置', 'fa/settings', 'am-icon-cogs', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('16', '14', '权限菜单', 'fa/authorize/index', 'am-icon-bars', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('17', '14', '管理组', 'fa/authorize/groups', 'am-icon-users', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('18', '14', '管理日志', 'fa/authorize/index', 'am-icon-file-text-o', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('19', '10', '部门设置', 'fa/member/department', 'am-icon-home', '1', '0', '0', '1');
-INSERT INTO `raw_authorize` VALUES ('20', '10', '员工列表', 'fa/member/index', 'am-icon-list', '1', '0', '1', '1');
-INSERT INTO `raw_authorize` VALUES ('21', '5', '工资表', 'fa/finance/wages', 'am-icon-table', '1', '0', '3', '1');
+INSERT INTO `raw_authorize` VALUES ('20', '10', '员工列表', 'fa/member/index', 'am-icon-list', '1', '1', '1', '1');
+INSERT INTO `raw_authorize` VALUES ('21', '5', '工资表', 'fa/finance/wages', 'am-icon-table', '1', '1', '3', '1');
 
 -- ----------------------------
 -- Table structure for raw_authorize_group

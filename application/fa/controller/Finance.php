@@ -30,4 +30,8 @@ class Finance extends Common
 
         return $this->fetch();
     }
+
+    public function wages(){
+        return $this->fetch();
+    }
 }

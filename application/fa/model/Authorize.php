@@ -2,6 +2,7 @@
 namespace app\fa\model;
 
 use think\facade\Cache;
+use think\facade\Request;
 use think\Model;
 
 class Authorize extends Model
@@ -40,12 +41,62 @@ class Authorize extends Model
             case 2:
                 $this->result = unlimitedForChild($this->dataList());
                 break;
+            case 3:
+                $this->result = $this->where(['pid'=>0,'display'=>1])
+                    ->order('order','desc')
+                    ->select();
+                break;
             default:
                 return $this->dataList();
         }
         return $this->result;
     }
 
+    /**
+     * 获取子菜单数据
+     * @return array|bool
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function getSubMenus(){
+        $path = strtolower(Request::module().'/'.Request::controller());
+        $data = $this->dataList();
+        $topMenu =[];
+        foreach ($data as $item=>$value){
+            if($value['name'] == $path){
+                $topMenu = $value;
+            }
+        }
+
+        $subMenus = [];
+        if(!$topMenu){
+            return false;
+        }
+        foreach ($data as $item=>$value){
+            if($value['pid'] == $topMenu['id']){
+                $subMenus[]= $value;
+            }
+        };
+        return [$topMenu,$subMenus];
+    }
+
+    /**
+     * 常用菜单
+     * @return array|mixed|\PDOStatement|string|\think\Collection
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function getCommonMenus(){
+        $this->result = Cache::get('commonMenus');
+        if(!$this->result){
+            $this->result = $this->where(['display'=>1,'status'=>1,'is_common'=>1])
+                ->order('order','desc')->select();
+            Cache::set('commonMenus',$this->result);
+        }
+        return $this->result;
+    }
     /**
      * 添加控制菜单
      * @param array $data
@@ -153,5 +204,6 @@ class Authorize extends Model
     private function clearCache()
     {
         Cache::rm('authorize');
+        Cache::rm('commonMenus');
     }
 }
