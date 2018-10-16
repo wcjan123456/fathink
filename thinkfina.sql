@@ -10,7 +10,7 @@ Target Server Type    : MariaDB
 Target Server Version : 100310
 File Encoding         : 65001
 
-Date: 2018-10-12 18:15:59
+Date: 2018-10-16 18:03:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,12 +30,12 @@ CREATE TABLE `raw_authorize` (
   `order` int(11) DEFAULT 0,
   `status` int(11) DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of raw_authorize
 -- ----------------------------
-INSERT INTO `raw_authorize` VALUES ('1', '0', '首页概述', 'fa/index/index', 'am-icon-dashboard', '1', '0', '0', '1');
+INSERT INTO `raw_authorize` VALUES ('1', '0', '首页概述', 'fa/index', 'am-icon-dashboard', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('2', '0', '项目管理', 'fa/projects', 'am-icon-tasks', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('3', '2', '项目列表', 'fa/projects/index', 'am-icon-tasks', '1', '1', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('4', '2', '项目报表', 'fa/projects/report', 'am-icon-bar-chart', '1', '0', '0', '1');
@@ -46,7 +46,7 @@ INSERT INTO `raw_authorize` VALUES ('8', '5', '资金流', 'fa/finance/managemen
 INSERT INTO `raw_authorize` VALUES ('9', '5', '财务报表', 'fa/finance/statements', 'am-icon-bar-chart', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('10', '0', '部门管理', 'fa/member', 'am-icon-graduation-cap', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('11', '0', '客户关系', 'fa/member/index', 'am-icon-sitemap', '1', '1', '0', '1');
-INSERT INTO `raw_authorize` VALUES ('12', '0', '报价管理', 'fa/member/index', 'am-icon-rocket', '1', '1', '0', '1');
+INSERT INTO `raw_authorize` VALUES ('12', '0', '报价管理', 'fa/quoted', 'am-icon-rocket', '1', '1', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('13', '0', '文档管理', 'fa/documents', 'am-icon-folder-open-o', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('14', '0', '权限管理', 'fa/authorize', 'am-icon-sliders', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('15', '0', '全局设置', 'fa/settings', 'am-icon-cogs', '1', '0', '0', '1');
@@ -56,6 +56,9 @@ INSERT INTO `raw_authorize` VALUES ('18', '14', '管理日志', 'fa/authorize/in
 INSERT INTO `raw_authorize` VALUES ('19', '10', '部门设置', 'fa/member/department', 'am-icon-home', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('20', '10', '员工列表', 'fa/member/index', 'am-icon-list', '1', '1', '1', '1');
 INSERT INTO `raw_authorize` VALUES ('21', '5', '工资表', 'fa/finance/wages', 'am-icon-table', '1', '1', '3', '1');
+INSERT INTO `raw_authorize` VALUES ('22', '12', '报价列表', 'fa/quoted/index', 'am-icon-list', '1', '0', '0', '1');
+INSERT INTO `raw_authorize` VALUES ('23', '12', '新建报价', 'fa/quoted/create_item', 'am-icon-plus', '1', '0', '0', '1');
+INSERT INTO `raw_authorize` VALUES ('24', '12', '产品报价', 'fa/quoted/products', 'am-icon-th-large', '1', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for raw_authorize_group
@@ -247,6 +250,69 @@ CREATE TABLE `raw_projects_report` (
 -- ----------------------------
 -- Records of raw_projects_report
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for raw_quoted
+-- ----------------------------
+DROP TABLE IF EXISTS `raw_quoted`;
+CREATE TABLE `raw_quoted` (
+  `qid` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `subject` varchar(200) DEFAULT NULL,
+  `customer` varchar(200) DEFAULT NULL,
+  `customer_mobile` varchar(50) DEFAULT NULL,
+  `total_price` decimal(10,2) DEFAULT NULL,
+  `pm_id` int(11) DEFAULT NULL,
+  `dateline` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`qid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of raw_quoted
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for raw_quoted_item
+-- ----------------------------
+DROP TABLE IF EXISTS `raw_quoted_item`;
+CREATE TABLE `raw_quoted_item` (
+  `item_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `qid` int(11) DEFAULT NULL,
+  `item` varchar(120) DEFAULT NULL,
+  `pid` int(11) DEFAULT NULL,
+  `spec` varchar(50) DEFAULT NULL,
+  `nums` int(11) DEFAULT NULL,
+  `area` varchar(50) DEFAULT NULL,
+  `price` varchar(50) DEFAULT NULL,
+  `total` varchar(255) DEFAULT NULL,
+  `remarks` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`item_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of raw_quoted_item
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for raw_quoted_products
+-- ----------------------------
+DROP TABLE IF EXISTS `raw_quoted_products`;
+CREATE TABLE `raw_quoted_products` (
+  `pid` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(120) DEFAULT NULL,
+  `in_price` decimal(10,2) DEFAULT NULL,
+  `out_price` decimal(10,2) DEFAULT NULL,
+  `unit` varchar(50) DEFAULT NULL,
+  `supplier` varchar(120) DEFAULT NULL,
+  `status` int(11) DEFAULT 1,
+  PRIMARY KEY (`pid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of raw_quoted_products
+-- ----------------------------
+INSERT INTO `raw_quoted_products` VALUES ('1', '普通喷绘布', '6.00', '20.00', '㎡', '赓达数码', '1');
 
 -- ----------------------------
 -- Table structure for raw_working_hours

@@ -153,9 +153,12 @@ p,*+p{
     margin-bottom: 1rem;
 }
 .am-page-name {
-    margin: 1rem 0 0;
-    font-size: 1.2rem;
+    margin:0 -1rem 1.5rem -1rem;
+    font-size: 16px;
     font-weight: 400;
+    height: 42px;
+    padding:0 0 .625rem 1rem;
+    border-bottom: 1px solid #d9dee4;
 }
 .am-breadcrumb {
     padding: 0;
@@ -177,6 +180,9 @@ p,*+p{
 }
 .am-space-rem>*{
     padding: 0 .5rem;
+}
+.am-space-rem+.am-space-rem{
+    margin-top: .5rem;
 }
 .am-g {
     width: auto;
@@ -372,4 +378,14 @@ ul.am-dropdown-content>li>a{
 .am-table-sm>thead>tr>th,
 .am-table-sm>tbody>tr>td{
     padding: .25em;
+}
+.input-select{
+    position: relative;
+}
+.input-select:before{
+    position: absolute;
+    top: 6px;
+    right: 12px;
+    content:"\f046";
+    color: #888;
 }

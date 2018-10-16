@@ -1,0 +1,100 @@
+{extend name="common"/}
+{block name="content"}
+    <h3 class="am-page-name">新建报价单</h3>
+<form action="{:url('create_item')}" method="POST" role="form" class="am-form am-form-horizontal">
+    <div class="am-form-group">
+        <label  class="am-u-sm-2 am-form-label">报价单名称</label>
+        <div class="am-u-sm-6 am-u-end">
+            <input type="text" name="subject" placeholder="输入报价单名称"/>
+        </div>
+    </div>
+    <div class="am-form-group">
+        <label  class="am-u-sm-2 am-form-label">客户名称</label>
+        <div class="am-u-sm-2">
+            <input type="text" name="customer" placeholder="输入客户名称"/>
+        </div>
+        <div class="am-u-sm-2 am-u-end">
+            <input type="text" name="customer_mobile" placeholder="输入客户联系电话"/>
+        </div>
+    </div>
+    <div class="am-form-group">
+        <label  class="am-u-sm-2 am-form-label">报价明细</label>
+        <div class="am-u-sm-9 am-u-end">
+            <section class="am-panel am-panel-default am-margin-bottom-0">
+                <header class="am-panel-hd">
+                    <div class="am-g am-space-rem">
+                        <div class="am-u-sm-3">项目</div>
+                        <div class="am-u-sm-1">材质/品牌</div>
+                        <div class="am-u-sm-1">规格</div>
+                        <div class="am-u-sm-1">数量</div>
+                        <div class="am-u-sm-1">面积</div>
+                        <div class="am-u-sm-1">单价</div>
+                        <div class="am-u-sm-1">总价</div>
+                        <div class="am-u-sm-2">备注</div>
+                        <div class="am-u-sm-1"></div>
+                    </div>
+                </header>
+                <div class="am-panel-bd" id="item-list">
+                    <div class="am-g am-space-rem" id="item-id-0">
+                        <div class="am-u-sm-3"><input type="text" name="item[][item]" placeholder="项描述"></div>
+                        <div class="am-u-sm-1 input-select" data-item-id="0"><input type="text" name="item[][brand]" placeholder="请选择"></div>
+                        <div class="am-u-sm-1"><input type="text" name="item[][spec]" placeholder="规格"></div>
+                        <div class="am-u-sm-1"><input type="text" name="item[][nums]" placeholder="数量"></div>
+                        <div class="am-u-sm-1"><input type="text" name="item[][area]" placeholder="面积"></div>
+                        <div class="am-u-sm-1"><input type="text" name="item[][unit]" placeholder="单价"></div>
+                        <div class="am-u-sm-1"><input type="text" name="item[][total]" placeholder="总价"></div>
+                        <div class="am-u-sm-2"><input type="text" name="item[][remarks]" placeholder="其他备注"></div>
+                        <div class="am-u-sm-1"></div>
+                    </div>
+                    <div class="am-add-more am-text-center am-margin-top">
+                        <a href="javascript:;" onclick="addItem()" class="am-icon-angle-double-right"> 新增一项
+                        <span class="am-icon-angle-double-left"></span></a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="am-form-group">
+        <label  class="am-u-sm-2 am-form-label">合计金额</label>
+        <div class="am-u-sm-2 am-u-end">
+            <input type="number" name="total_price" placeholder="合计金额"/>
+        </div>
+    </div>
+    <div class="am-form-group">
+        <label  class="am-u-sm-2 am-form-label">报价人</label>
+        <div class="am-u-sm-6 am-u-end">
+            <select name="pm_id" data-am-selected="{maxHeight:'200px',searchBox:1}">
+                {volist name="userlist" id="vo"}
+                <option value="{$vo.uid}">{$vo.username}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+    <div class="am-form-group">
+        <div class="am-u-sm-10 am-u-sm-offset-2">
+            <button type="button" onclick="im.submit('.am-form',this)" class="am-btn am-btn-primary am-icon-check"> 提交保存</button>
+            <button type="button" class="am-btn am-btn-success am-icon-send"> 转为项目</button>
+            <button type="button" class="am-btn am-btn-default am-icon-external-link"> 导出报价单</button>
+        </div>
+    </div>
+</form>
+{/block}
+{block name="js"}
+<script src="/static/js/quoted.js"></script>
+{/block}
+{block name="modal"}
+<div class="am-modal am-modal-confirm" tabindex="-1" id="selectBrand">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">选择品牌/材质</div>
+        <div class="am-modal-bd">
+            内容
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn am-btn am-btn-default" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn am-btn am-btn-primary" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+
+
+{/block}
