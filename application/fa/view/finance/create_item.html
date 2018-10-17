@@ -11,7 +11,7 @@
         <h3 class="am-panel-title">添加收支记录</h3>
     </div>
     <div class="am-panel-bd">
-        <form action="action" method="POST" role="form" class="am-form am-form-horizontal">
+        <form action="{:url('create_item')}" method="POST" role="form" class="am-form am-form-horizontal">
             <div class="am-form-group">
                 <label class="am-u-sm-2 am-form-label">用途描述</label>
                 <div class="am-u-sm-6 am-u-end">
@@ -72,7 +72,7 @@
                     <div class="am-btn-group" data-am-button>
                         {volist name="payment" id="vo"}
                         <label class="am-btn am-btn-default">
-                            <input type="radio" name="type"  value="{$vo.payment_id}"> {$vo.payment_name}
+                            <input type="radio" name="payment_id" {eq name="i" value="1"}checked{/eq} value="{$vo.payment_id}"> {$vo.payment_name}
                         </label>
                         {/volist}
                     </div>

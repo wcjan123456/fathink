@@ -3,6 +3,7 @@ namespace app\fa\controller;
 
 use think\facade\Config;
 use app\fa\model\Projects;
+use think\facade\Request;
 
 class Finance extends Common
 {
@@ -17,6 +18,11 @@ class Finance extends Common
      * @throws \think\exception\DbException
      */
     public function create_item(){
+        if(Request::isAjax()){
+            $finance=  new \app\fa\model\Finance();
+            $result = $finance->createItem();
+            return $result;
+        }
         $member = new \app\fa\model\Member();
         $userlist = $member->getUserList();
         $this->assign('userlist',$userlist);

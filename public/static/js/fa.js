@@ -92,7 +92,7 @@ let im = {
 };
 $('#uploader').upload({
     header: {
-        url: '/api/uploader/uploader.html?type=thumb&token=' + atoken,
+        url: '/api/handle/uploader.html?type=thumb&token=' + atoken,
         complete: function (res) {
             let ress = im.toObject(res.responseText);
             if (ress.code === 200) {
@@ -112,7 +112,7 @@ $('#uploader').upload({
 });
 $('#attachment').upload({
     header: {
-        url: '/api/uploader/attachment.html?type=attach&token=' + atoken,
+        url: '/api/handle/attachment.html?type=attach&token=' + atoken,
         complete: function (res) {
             let ress = im.toObject(res.responseText);
             if (ress.code === 200) {
@@ -134,7 +134,7 @@ $(document).on('click', '.am-upload-remove', function () {
     $('.rval').val('');
     $('.am-uploader-preview').find('img').remove();
     let cookie = $.AMUI.utils.cookie, file = cookie.get('lastUploaderImages');
-    im.sget('/api/uploader/unset_file.html?file=' + file + '&token=' + atoken)
+    im.sget('/api/handle/unset_file.html?file=' + file + '&token=' + atoken)
 });
 $(document).ready(function () {
     $("#selectAll").click(function () {

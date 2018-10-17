@@ -48,7 +48,7 @@ class Projects extends Model
     public function getProjectsPage($map){
         $data = $this->alias('p')
             ->join('member m','p.pm_id = m.uid','LEFT')
-            ->field('p.id,p.subject,p.price,p.level,p.dateline,p.end_time,p.message,p.status,m.username,p.pm_id')
+            ->field('p.id,p.subject,p.price,p.level,p.customer,p.dateline,p.end_time,p.message,p.status,m.username,p.pm_id')
             ->where($map)
             ->order('p.id','desc')->paginate(15);
         foreach ($data as $key=>$vaule){
