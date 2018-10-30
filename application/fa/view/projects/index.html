@@ -9,6 +9,7 @@
     <div class="am-panel-bd">
         <div class="am-cf">
             <a href="{:url('create_item')}" class="am-btn am-btn-primary am-icon-plus am-btn-hollow"> 添加项目</a>
+            <a href="{:url('create_item')}" class="am-btn am-btn-primary am-icon-plus am-btn-hollow"> 添加清单</a>
             <form class="am-form am-form-inline am-fr">
                 <div class="am-form-group">
                     <div class="am-dropdown" data-am-dropdown>
@@ -59,7 +60,7 @@
             {volist name="list" id="vo"}
             <tr>
                 <td>
-                    <div class="am-icon-btn am-radius {$vo.levelValue['color_style']}">{$vo.subject|mbs=1}</div>
+                    <div class="am-icon-btn {$vo.levelValue['color_style']}">{$vo.subject|mbs=1}</div>
                 </td>
                 <td>
                     <span class="am-text-lg">{$vo.subject}</span>

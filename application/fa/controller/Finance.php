@@ -7,7 +7,16 @@ use think\facade\Request;
 
 class Finance extends Common
 {
+    /**
+     * 分页列表
+     * @return mixed
+     * @throws \think\exception\DbException
+     */
     public function index(){
+
+        $fina = new \app\fa\model\Finance();
+        $data = $fina->getFinancePage();
+        $this->assign('list',$data);
 
         return $this->fetch();
     }

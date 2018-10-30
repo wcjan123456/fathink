@@ -5,7 +5,7 @@
 {/block}
 {block name="name"}收支记录{/block}
 {block name="content"}
-<div class="am-panel am-panel-default">
+<div class="am-panel am-panel-default am-panel-ova">
     <div class="am-panel-bd">
         <div class="am-g">
             <div class="am-u-sm-6 am-padding-left-0">
@@ -20,12 +20,12 @@
                                     data-am-dropdown-toggle>时间 <span class="am-icon-caret-down"></span>
                             </button>
                             <ul class="am-dropdown-content">
-                                <li><a href="">全部</a></li>
-                                <li><a href="">本月</a></li>
-                                <li><a href="">三个月</a></li>
-                                <li><a href="">半年</a></li>
-                                <li><a href="">一年</a></li>
-                                <li><a href="">三年</a></li>
+                                <li><a href="{:url('index')}?interval">全部</a></li>
+                                <li><a href="{:url('index')}?interval=1">最近一个月</a></li>
+                                <li><a href="{:url('index')}?interval=3">最近三个月</a></li>
+                                <li><a href="{:url('index')}?interval=6">最近半年</a></li>
+                                <li><a href="{:url('index')}?interval=12">最近一年</a></li>
+                                <li><a href="{:url('index')}?interval=36">三年</a></li>
                             </ul>
                         </div>
                     </div>
@@ -59,69 +59,43 @@
         </tr>
         </thead>
         <tbody>
+        {volist name="list" id="vo"}
         <tr>
             <td>
+                {eq name="vo.type" value="1"}
                 <span class="am-icon-btn am-success">收</span>
-            </td>
-            <td>
-                <div class="am-text-lg">购买材料</div>
-                <div class="am-text-sm am-text-muted">支付宝支付</div>
-            </td>
-            <td>
-                中梁壹号院喷绘围挡
-            </td>
-            <td class="am-text-success am-text-lg">￥29220.00</td>
-            <td>王斌</td>
-            <td>
-                <div class="am-table-btn">
-                    <a href="{:url('projects/details',['id'=>1])}">详情</a>
-                    <a href="{:url('projects/details',['id'=>1])}">编辑</a>
-                    <a href="{:url('projects/details',['id'=>1])}">删除</a>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
+                {else/}
                 <span class="am-icon-btn am-warning">支</span>
+                {/eq}
             </td>
             <td>
-                <div class="am-text-lg">购买材料</div>
-                <div class="am-text-sm am-text-muted">支付宝支付</div>
+                <div class="am-text-lg">{$vo.title}</div>
+                <div class="am-text-sm am-text-muted">{$vo.payment_name}支付</div>
             </td>
             <td>
-                中梁壹号院喷绘围挡
+                {$vo.subject}
             </td>
-            <td class="am-text-danger am-text-lg">￥29220.00</td>
+
+            <td class="am-text-lg">
+                {eq name="vo.type" value="1"}
+                <b class="am-text-success  am-success">￥{$vo.money}</b>
+                {else/}
+                <b class="am-text-warning am-warning">￥{$vo.money}</b>
+                {/eq}
+            </td>
             <td>王斌</td>
             <td>
                 <div class="am-table-btn">
-                    <a href="{:url('projects/details',['id'=>1])}">详情</a>
-                    <a href="{:url('projects/details',['id'=>1])}">编辑</a>
-                    <a href="{:url('projects/details',['id'=>1])}">删除</a>
+                    <a href="{:url('details',['id'=>$vo['id']])}">详情</a>
+                    <a href="{:url('editor',['id'=>$vo['id']])}">编辑</a>
+                    <a href="javascript:;">删除</a>
                 </div>
             </td>
         </tr>
+
+        {/volist}
         </tbody>
     </table>
-
 </div>
-<nav aria-label="Page navigation">
-    <ul class="pagination">
-        <li>
-            <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li>
-            <a href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-</nav>
+{$list->render()|raw}
 {/block}

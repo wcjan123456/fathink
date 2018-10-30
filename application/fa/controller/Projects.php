@@ -30,12 +30,15 @@ class Projects extends Common
         $this->assign('getStatus',$getStatus);
         $this->assign('interval',$getInterval);
         $map=[];
+        //搜索描述
         if ($subject){
             $map[]=['p.subject','like',"%$subject%"];
         }
+        //状态管理
         if($getStatus){
             $map[]=['p.status','=',$getStatus];
         }
+        //时间判断
         if($getInterval){
             switch ($getInterval){
                 case 1:
@@ -93,7 +96,25 @@ class Projects extends Common
             return $this->fetch();
         }
     }
+
+    /**
+     * 项目详情
+     * @return mixed
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
     public function details(){
+        $project = new \app\fa\model\Projects();
+        $id = Request::param('id','','intval');
+        $data = $project->getProject($id);
+
+        //项目状态
+        $status = Config::get('projectStatus');
+        $this->assign('status',$status);
+
+        $this->assign('data',$data);
+
         return $this->fetch();
     }
     public function report(){

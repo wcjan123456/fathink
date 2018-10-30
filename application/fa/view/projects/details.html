@@ -11,15 +11,15 @@
     </header>
     <div class="am-panel-bd">
         <div class="am-g">
-            <div class="am-u-sm-8">
-                <img width="48" class="am-radius am-fl am-margin-right"
-                     src="https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png">
-                <span class="am-text-lg">中梁壹号院工地喷绘围挡</span>
-                <div class="am-text-muted">喷绘，彩钢瓦围挡 大门包铁皮</div>
+            <div class="am-u-sm-8 am-padding-left-0">
+                <div class="am-icon-btn am-radius am-primary">{$data.subject|mbs=1}</div>
+                <strong class="am-text-lg">{$data.subject}</strong>
             </div>
-            <div class="am-u-sm-4 am-text-right">
+            <div class="am-u-sm-4 am-text-right am-padding-right-0">
+                <div class="am-margin-bottom-sm">
                 <span class="am-btn am-btn-sm am-btn-primary">添加制作清单</span>
                 <span class="am-btn am-btn-sm am-btn-success">添加收支记录</span>
+                </div>
                 <div class="am-btn-group am-btn-group-sm">
                     <button type="button" class="am-btn am-btn-default">编辑</button>
                     <button type="button" class="am-btn am-btn-default">进度修改</button>
@@ -29,22 +29,22 @@
         </div>
         <div class="am-g am-border-top am-margin-top-xl am-padding-top">
             <div class="am-u-sm-4">
-                <p>项目经理：xxx</p>
-                <p>接单时间：2018年9月13日</p>
-                <p>完成时间：2018年9月20日</p>
+                <p>项目经理：{$data.pm}</p>
+                <p>接单时间：{$data.dateline|date="Y年m月d日"}</p>
+                <p>完成时间：{$data.end_time|date="Y年m月d日"}</p>
             </div>
             <div class="am-u-sm-4">
-                <p>甲方：重庆贵华建筑有限公司</p>
-                <p>甲方负责人：罗xxx</p>
-                <p>联系方式：1802500154</p>
+                <p>甲方：{$data.customer}</p>
+                <p>甲方负责人：{$data.customer_pm}</p>
+                <p>联系方式：{$data.customer_mobile}</p>
             </div>
             <div class="am-u-sm-2 am-text-right">
                 <span class="am-text-muted">状态</span>
-                <p>施工已完成</p>
+                <p>{$data.status_name}</p>
             </div>
             <div class="am-u-sm-2 am-text-right">
                 <span class="am-text-muted">合同金额</span>
-                <p class="am-text-xl am-text-danger">￥22338.88</p>
+                <p class="am-text-xl am-text-danger">{$data.price}</p>
             </div>
         </div>
     </div>
@@ -56,19 +56,12 @@
     <div class="am-panel-bd">
         <div class="am-project-progress">
         <div class="am-project-bar">
-            <div class="am-project-bar-line am-percent-8"></div>
+            <div class="am-project-bar-line am-percent-{$data.status-1}"></div>
         </div>
         <ul class="am-avg-sm-10">
-            <li class="am-active">未开始</li>
-            <li class="am-active">已接单</li>
-            <li class="am-active">设计出图</li>
-            <li class="am-active">已出图</li>
-            <li class="am-active">制作中</li>
-            <li class="am-active">等待施工</li>
-            <li class="am-active">施工中</li>
-            <li class="am-active">施工完成</li>
-            <li>等待收款</li>
-            <li>已完结</li>
+           {volist name="status" id="vo"}
+           <li {lt name="vo.status" value="$data.status"}class="am-active"{/lt}>{$vo.status_name}</li>
+           {/volist}
         </ul>
         </div>
     </div>
@@ -118,7 +111,54 @@
                     </table>
                 </div>
                 <div class="am-tab-panel " id="tab2-2">
-                    大江东去<br>浪淘尽<br>千古风流人物<br>故垒西边<br>人道是<br>三国周郎赤壁<br>恨乱石穿空<br>惊涛拍岸<br>卷起千堆雪<br>江山如画<br>一时多少豪杰
+                    <table class="am-table">
+                        <colgroup>
+                            <col width="50">
+                            <col>
+                            <col width="300">
+                            <col width="150" align="center">
+                            <col width="80" align="center">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th>类型</th>
+                            <th>用途描述</th>
+                            <th>项目</th>
+                            <th>金额</th>
+                            <th>经办人</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="data.records" id="vo"}
+                        <tr>
+                            <td>
+                                {eq name="vo.type" value="1"}
+                                <span class="am-icon-btn am-success">收</span>
+                                {else/}
+                                <span class="am-icon-btn am-warning">支</span>
+                                {/eq}
+                            </td>
+                            <td>
+                                <div class="am-text-lg">{$vo.title}</div>
+                                <div class="am-text-sm am-text-muted">{$vo.payment_name}支付</div>
+                            </td>
+                            <td>
+                                {$vo.subject}
+                            </td>
+
+                            <td class="am-text-lg">
+                                {eq name="vo.type" value="1"}
+                                <b class="am-text-success  am-success">￥{$vo.money}</b>
+                                {else/}
+                                <b class="am-text-warning am-warning">￥{$vo.money}</b>
+                                {/eq}
+                            </td>
+                            <td>王斌</td>
+                        </tr>
+
+                        {/volist}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

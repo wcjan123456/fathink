@@ -35,8 +35,26 @@ class Projects extends Model
         'customer.require'=>'客户名称不能为空',
         'customer_pm.require'=>'客户负责人不能为空',
     ];
+
+    /**
+     * 获取项目详情
+     * @param $projectId
+     * @return array|null|\PDOStatement|string|Model
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
     public function getProject($projectId){
-        
+        $data = $this->where('id',$projectId)->find();
+        $data['status_name'] = $this->projectStatus[$data['status']-1]['status_name'];
+        $member = new Member();
+        $pm = $member->where('uid',$data['pm_id'])->column('username');
+        $data['pm'] = $pm[0];
+        $finance = new Finance();
+        $map[] = ['f.pid','=',$projectId];
+        $data['records'] = $finance->getFinancePage($map);
+
+        return $data;
     }
 
     /**
