@@ -15,6 +15,16 @@
 <body>
 <header class="am-topbar am-topbar-fixed-top">
     <div class="am-g">
+        <div class="am-dropdown am-margin-left" data-am-dropdown>
+            <button class="am-btn am-btn-primary am-dropdown-toggle am-icon-plus"
+                    data-am-dropdown-toggle> 新建 <span class="am-icon-angle-down"></span></button>
+            <ul class="am-dropdown-content am-fixd-top-45">
+               <li><a href="" class="am-icon-tasks"> 新建项目</a></li>
+               <li><a href="" class="am-icon-paypal"> 新增收支</a></li>
+               <li><a href="" class="am-icon-rocket"> 新建报价</a></li>
+            </ul>
+        </div>
+
         <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right">
             <li><a href="javascript:im.clearCache();" class="am-icon-refresh"></a></li>
             <li><a href="#" class="am-icon-bell-o"></a></li>
@@ -45,15 +55,14 @@
     </ul>
 </aside>
 <div class="aside-sub">
-    <div class="aside-subbar">{$toplocal.title}</div>
-    <ul class="am-nav">
+    <ul class="am-nav am-nav-pills">
         {empty name="sub_menus"}
         {volist name="common" id="vo"}
-        <li><a href="{$vo.name|url}"><span class="am-icon-fw {$vo.icon}"></span> {$vo.title}</a></li>
+        <li><a href="{$vo.name|url}">{$vo.title}</a></li>
         {/volist}
         {else/}
         {volist name="sub_menus" id="vo"}
-        <li><a href="{$vo.name|url}"><span class="am-icon-fw {$vo.icon}"></span> {$vo.title}</a></li>
+        <li><a href="{$vo.name|url}">{$vo.title}</a></li>
         {/volist}
         {/empty}
     </ul>

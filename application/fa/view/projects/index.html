@@ -5,108 +5,104 @@
 {/block}
 {block name="name"}项目列表{/block}
 {block name="content"}
-<div class="am-panel am-panel-default am-panel-ova">
-    <div class="am-panel-bd">
-        <div class="am-cf">
-            <a href="{:url('create_item')}" class="am-btn am-btn-primary am-icon-plus am-btn-hollow"> 添加项目</a>
-            <a href="{:url('create_item')}" class="am-btn am-btn-primary am-icon-plus am-btn-hollow"> 添加清单</a>
-            <form class="am-form am-form-inline am-fr">
-                <div class="am-form-group">
-                    <div class="am-dropdown" data-am-dropdown>
-                        <button class="am-btn am-btn-default am-dropdown-toggle"
-                                data-am-dropdown-toggle>项目状态 <span class="am-icon-caret-down"></span>
-                        </button>
-                        <ul class="am-dropdown-content">
-                            <li><a href="{:url('index')}?interval={$interval}&status">全部</a></li>
-                           {volist name="status" id="vo"}
-                           <li><a href="{:url('index')}?status={$vo.status}&interval={$interval}">{$vo.status_name}</a></li>
-                           {/volist}
-                        </ul>
-                    </div>
-                    <div class="am-dropdown" data-am-dropdown>
-                        <button class="am-btn am-btn-default am-dropdown-toggle"
-                                data-am-dropdown-toggle>时间区间 <span class="am-icon-caret-down"></span>
-                        </button>
-                        <ul class="am-dropdown-content">
-                            <li><a href="{:url('index')}?status={$getStatus}&interval">全部</a></li>
-                            <li><a href="{:url('index')}?status={$getStatus}&interval=1">最近一个月</a></li>
-                            <li><a href="{:url('index')}?status={$getStatus}&interval=3">最近三个月</a></li>
-                            <li><a href="{:url('index')}?status={$getStatus}&interval=6">最近半年</a></li>
-                            <li><a href="{:url('index')}?status={$getStatus}&interval=12">最近一年</a></li>
-                            <li><a href="{:url('index')}?status={$getStatus}&interval=36">三年</a></li>
-                        </ul>
-                    </div>
+    <div class="am-cf am-margin-bottom">
+        <a href="{:url('create_item')}" class="am-btn am-btn-primary am-icon-plus am-btn-hollow"> 添加项目</a>
+        <a href="{:url('create_item')}" class="am-btn am-btn-primary am-icon-plus am-btn-hollow"> 添加清单</a>
+        <form class="am-form am-form-inline am-fr">
+            <div class="am-form-group">
+                <div class="am-dropdown" data-am-dropdown>
+                    <button class="am-btn am-btn-default am-dropdown-toggle"
+                            data-am-dropdown-toggle>项目状态 <span class="am-icon-caret-down"></span>
+                    </button>
+                    <ul class="am-dropdown-content">
+                        <li><a href="{:url('index')}?interval={$interval}&status">全部</a></li>
+                       {volist name="status" id="vo"}
+                       <li><a href="{:url('index')}?status={$vo.status}&interval={$interval}">{$vo.status_name}</a></li>
+                       {/volist}
+                    </ul>
                 </div>
-                <div class="am-form-group" style="width: 200px">
-                    <input type="text" name="subject"
-                           class="am-input-sm" placeholder="输入项目名称搜索">
+                <div class="am-dropdown" data-am-dropdown>
+                    <button class="am-btn am-btn-default am-dropdown-toggle"
+                            data-am-dropdown-toggle>时间区间 <span class="am-icon-caret-down"></span>
+                    </button>
+                    <ul class="am-dropdown-content">
+                        <li><a href="{:url('index')}?status={$getStatus}&interval">全部</a></li>
+                        <li><a href="{:url('index')}?status={$getStatus}&interval=1">最近一个月</a></li>
+                        <li><a href="{:url('index')}?status={$getStatus}&interval=3">最近三个月</a></li>
+                        <li><a href="{:url('index')}?status={$getStatus}&interval=6">最近半年</a></li>
+                        <li><a href="{:url('index')}?status={$getStatus}&interval=12">最近一年</a></li>
+                        <li><a href="{:url('index')}?status={$getStatus}&interval=36">三年</a></li>
+                    </ul>
                 </div>
-                <button type="submit" class="am-btn am-btn-default btn-sm">
-                    <span class="am-icon-search"></span> 搜索</button>
-            </form>
-        </div>
-        <table class="am-table am-margin-top-lg am-table-project">
-            <colgroup>
-                <col width="50">
-                <col>
-                <col width="120">
-                <col width="100">
-                <col width="100">
-                <col width="100">
-                <col width="200">
-                <col width="130">
-            </colgroup>
-            <tbody>
-            {volist name="list" id="vo"}
-            <tr>
-                <td>
-                    <div class="am-icon-btn {$vo.levelValue['color_style']}">{$vo.subject|mbs=1}</div>
-                </td>
-                <td>
-                    <span class="am-text-lg">{$vo.subject}</span>
-                    <div class="am-text-muted">{$vo.customer}</div>
-                </td>
-                <td>
-                    <span class="am-text-muted">项目金额</span>
-                    <div class="am-text-danger am-text-lg">￥{$vo.price}</div>
-                </td>
-                <td>
-                    <span class="am-text-muted">项目经理</span>
-                    <div>{$vo.username}</div>
-                </td>
-                <td>
-                    <span class="am-text-muted">接单时间</span>
-                    <div>{$vo.dateline|date='Y-m-d'}</div>
-                </td>
-                <td>
-                    <span class="am-text-muted">完工时间</span>
-                    <div>{$vo.end_time|date='Y-m-d'}</div>
-                </td>
-                <td>
-                    <div>{$vo.statusValue['status_name']}</div>
-                    <div data-am-progressbar="{percentage:'{$vo.percentage}', size: 'sm'}"></div>
-                </td>
-                <td>
-                    <div class="am-table-btn">
-                        <a href="{:url('projects/details',['id'=>$vo['id']])}">详情</a>
-                        <div class="am-dropdown" data-am-dropdown="{trigger: 'hover' }">
-                            <a href="javascript:;" class="am-dropdown-toggle"
-                               data-am-dropdown-toggle>更多 <span class="am-icon-angle-down"></span></a>
-                            <ul class="am-dropdown-content">
-                                <li><a href="{:url('ed_project',['id'=>$vo['id']])}" class="am-icon-pencil"> 编辑</a></li>
-                                <li><a href="javascript:;" onclick="edStatus({$vo.id},{$vo.status})" class="am-icon-refresh"> 进度修改</a></li>
-                                <li><a href="{:url('project_upload_design',['id'=>$vo['id']])}" class="am-icon-cloud-upload"> 上传设计图</a></li>
-                                <li><a href="javascript:;" onclick="delProject({$vo.id})" class="am-icon-trash-o"> 删除</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            {/volist}
-            </tbody>
-        </table>
+            </div>
+            <div class="am-form-group" style="width: 200px">
+                <input type="text" name="subject"
+                       class="am-input-sm" placeholder="输入项目名称搜索">
+            </div>
+            <button type="submit" class="am-btn am-btn-default btn-sm">
+                <span class="am-icon-search"></span> 搜索</button>
+        </form>
     </div>
-</div>
+    <table class="am-table am-table-project">
+        <colgroup>
+            <col width="50">
+            <col>
+            <col width="120">
+            <col width="100">
+            <col width="100">
+            <col width="100">
+            <col width="200">
+            <col width="130">
+        </colgroup>
+        <tbody>
+        {volist name="list" id="vo"}
+        <tr>
+            <td>
+                <div class="am-icon-btn {$vo.levelValue['color_style']}">{$vo.subject|mbs=1}</div>
+            </td>
+            <td>
+                <span class="am-text-lg">{$vo.subject}</span>
+                <div class="am-text-muted">{$vo.customer}</div>
+            </td>
+            <td>
+                <span class="am-text-muted">项目金额</span>
+                <div class="am-text-danger am-text-lg">￥{$vo.price}</div>
+            </td>
+            <td>
+                <span class="am-text-muted">项目经理</span>
+                <div>{$vo.username}</div>
+            </td>
+            <td>
+                <span class="am-text-muted">接单时间</span>
+                <div>{$vo.dateline|date='Y-m-d'}</div>
+            </td>
+            <td>
+                <span class="am-text-muted">完工时间</span>
+                <div>{$vo.end_time|date='Y-m-d'}</div>
+            </td>
+            <td>
+                <div>{$vo.statusValue['status_name']}</div>
+                <div data-am-progressbar="{percentage:'{$vo.percentage}', size: 'sm'}"></div>
+            </td>
+            <td>
+                <div class="am-table-btn">
+                    <a href="{:url('projects/details',['id'=>$vo['id']])}">详情</a>
+                    <div class="am-dropdown" data-am-dropdown="{trigger: 'hover' }">
+                        <a href="javascript:;" class="am-dropdown-toggle"
+                           data-am-dropdown-toggle>更多 <span class="am-icon-angle-down"></span></a>
+                        <ul class="am-dropdown-content">
+                            <li><a href="{:url('ed_project',['id'=>$vo['id']])}" class="am-icon-pencil"> 编辑</a></li>
+                            <li><a href="javascript:;" onclick="edStatus({$vo.id},{$vo.status})" class="am-icon-refresh"> 进度修改</a></li>
+                            <li><a href="{:url('project_upload_design',['id'=>$vo['id']])}" class="am-icon-cloud-upload"> 上传设计图</a></li>
+                            <li><a href="javascript:;" onclick="delProject({$vo.id})" class="am-icon-trash-o"> 删除</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
 {$list->render()|raw}
 {/block}
 {block name="modal"}

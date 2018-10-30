@@ -5,41 +5,38 @@
 {/block}
 {block name="name"}收支记录{/block}
 {block name="content"}
-<div class="am-panel am-panel-default am-panel-ova">
-    <div class="am-panel-bd">
-        <div class="am-g">
-            <div class="am-u-sm-6 am-padding-left-0">
-                <a href="{:url('create_item')}"
-                   class="am-btn am-btn-primary am-icon-plus am-btn-hollow"> 添加记录</a>
-            </div>
-            <div class="am-u-sm-6 am-text-right">
-                <form class="am-form am-form-inline am-fr">
-                    <div class="am-form-group">
-                        <div class="am-dropdown" data-am-dropdown>
-                            <button class="am-btn am-btn-default am-dropdown-toggle"
-                                    data-am-dropdown-toggle>时间 <span class="am-icon-caret-down"></span>
-                            </button>
-                            <ul class="am-dropdown-content">
-                                <li><a href="{:url('index')}?interval">全部</a></li>
-                                <li><a href="{:url('index')}?interval=1">最近一个月</a></li>
-                                <li><a href="{:url('index')}?interval=3">最近三个月</a></li>
-                                <li><a href="{:url('index')}?interval=6">最近半年</a></li>
-                                <li><a href="{:url('index')}?interval=12">最近一年</a></li>
-                                <li><a href="{:url('index')}?interval=36">三年</a></li>
-                            </ul>
-                        </div>
+    <div class="am-g am-margin-bottom">
+        <div class="am-u-sm-6 am-padding-left-0">
+            <a href="{:url('create_item')}"
+               class="am-btn am-btn-primary am-icon-plus am-btn-hollow"> 添加记录</a>
+        </div>
+        <div class="am-u-sm-6 am-text-right">
+            <form class="am-form am-form-inline am-fr">
+                <div class="am-form-group">
+                    <div class="am-dropdown" data-am-dropdown>
+                        <button class="am-btn am-btn-default am-dropdown-toggle"
+                                data-am-dropdown-toggle>时间 <span class="am-icon-caret-down"></span>
+                        </button>
+                        <ul class="am-dropdown-content">
+                            <li><a href="{:url('index')}?interval">全部</a></li>
+                            <li><a href="{:url('index')}?interval=1">最近一个月</a></li>
+                            <li><a href="{:url('index')}?interval=3">最近三个月</a></li>
+                            <li><a href="{:url('index')}?interval=6">最近半年</a></li>
+                            <li><a href="{:url('index')}?interval=12">最近一年</a></li>
+                            <li><a href="{:url('index')}?interval=36">三年</a></li>
+                        </ul>
                     </div>
-                    <div class="am-form-group">
-                        <input type="text" name="subject"
-                               class="am-input-sm" placeholder="输入收支记录搜索">
-                    </div>
-                    <button type="submit" class="am-btn am-btn-default">
-                        <span class="am-icon-search"></span> 搜索</button>
-                </form>
-            </div>
+                </div>
+                <div class="am-form-group">
+                    <input type="text" name="subject"
+                           class="am-input-sm" placeholder="输入收支记录搜索">
+                </div>
+                <button type="submit" class="am-btn am-btn-default">
+                    <span class="am-icon-search"></span> 搜索</button>
+            </form>
         </div>
     </div>
-    <table class="am-table">
+    <table class="am-table am-table-project">
         <colgroup>
             <col width="50">
             <col>
@@ -96,6 +93,5 @@
         {/volist}
         </tbody>
     </table>
-</div>
 {$list->render()|raw}
 {/block}
