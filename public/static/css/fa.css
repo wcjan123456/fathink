@@ -47,6 +47,8 @@ input+.am-input-group-label{
     line-height: 60px;
     min-height: 60px;
     left: 180px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-bottom: none;
 
 }
 .am-fixd-top-45 {
@@ -146,6 +148,8 @@ p,*+p{
     height: 40px;
     z-index: 999;
     padding: 0 .25rem;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 .aside-sub>.am-nav>li>a {
     height: 40px;
