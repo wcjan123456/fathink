@@ -104,6 +104,7 @@ p,*+p{
     height: 60px;
     line-height: 60px;
     vertical-align: middle;
+    background-color: rgba(225,225,225,.3);
 }
 .aside>.am-nav{
     margin: 1rem;
@@ -181,12 +182,12 @@ p,*+p{
     margin-bottom: 1rem;
 }
 .am-page-name {
-    margin:0 -1rem 1.5rem -1rem;
+    margin-bottom: 1.5rem;
     font-size: 16px;
     font-weight: 400;
-    height: 42px;
-    padding:0 0 .625rem 1rem;
-    border-bottom: 1px solid #d9dee4;
+    padding:.625rem 1rem;
+    background-color: #f6f8f9;
+    border-radius: 2px;
 }
 .am-breadcrumb {
     padding: 0;
