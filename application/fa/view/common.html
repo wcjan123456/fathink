@@ -26,18 +26,18 @@
         </div>
 
         <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right">
-            <li><a href="javascript:im.clearCache();" class="am-icon-refresh"></a></li>
             <li><a href="#" class="am-icon-bell-o"></a></li>
-            <li class="am-dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                   aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
-                <ul class="am-dropdown-content">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>
+            <li class="am-padding-right-xl">
+                <div class="am-dropdown" data-am-dropdown>
+                    <a href="javascript:;" class=" am-dropdown-toggle" data-am-dropdown-toggle>Admin
+                        <span class="am-icon-angle-down"></span>
+                    </a>
+                    <ul class="am-dropdown-content">
+                        <li><a href="#" class="am-icon-info-circle"> 个人信息</a></li>
+                        <li><a href="javascript:im.clearCache();" class="am-icon-refresh"> 清除全站缓存</a></li>
+                        <li><a href="#" class="am-icon-sign-out"> 安全退出</a></li>
+                    </ul>
+                </div>
             </li>
         </ul>
     </div>
@@ -50,7 +50,11 @@
     </div>
     <ul class="am-nav">
         {volist name="menus" id="vo"}
-        <li><a href="{$vo.name|reurl}?spm={$vo.id|md5}"><i class="am-icon-fw {$vo.icon}"></i> <span>{$vo.title}</span></a></li>
+        <li>
+            <a href="{$vo.name|reurl}?spm={$vo.id|md5}">
+                <i class="am-icon-fw {$vo.icon} am-color-{$i}"></i> <span>{$vo.title}</span>
+            </a>
+        </li>
         {/volist}
     </ul>
 </aside>

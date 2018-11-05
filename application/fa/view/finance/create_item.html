@@ -6,102 +6,96 @@
 {/block}
 {block name="name"}添加收支记录{/block}
 {block name="content"}
-<div class="am-panel am-panel-default am-panel-ova">
-    <div class="am-panel-hd">
-        <h3 class="am-panel-title">添加收支记录</h3>
-    </div>
-    <div class="am-panel-bd">
-        <form action="{:url('create_item')}" method="POST" role="form" class="am-form am-form-horizontal">
-            <div class="am-form-group">
-                <label class="am-u-sm-2 am-form-label">用途描述</label>
-                <div class="am-u-sm-6 am-u-end">
-                    <input type="text" name="title" placeholder="用途描述"/>
+    <div class="am-page-name">新建收支记录</div>
+    <form action="{:url('create_item')}" method="POST" role="form" class="am-form am-form-horizontal">
+        <div class="am-form-group">
+            <label class="am-u-sm-2 am-form-label">用途描述</label>
+            <div class="am-u-sm-6 am-u-end">
+                <input type="text" name="title" placeholder="用途描述"/>
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label class="am-u-sm-2 am-form-label">选择项目</label>
+            <div class="am-u-sm-3 am-padding-right-0">
+                <select name="pid" data-am-selected="{btnWidth:'100%',searchBox:1}">
+                    <option value=""></option>
+                    {volist name="project" id="vo"}
+                    <option value="{$vo.id}">{$vo.subject}</option>
+                    {/volist}
+                </select>
+            </div>
+            <div class="am-u-sm-7">
+                <a href="{:url('projects/create_item')}" target="_blank"
+                   class="am-btn am-btn-default am-icon-plus"> 新增项目</a>
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label class="am-u-sm-2 am-form-label">收支类型</label>
+            <div class="am-u-sm-6 am-u-end">
+                <div class="am-btn-group" data-am-button>
+                    <label class="am-btn am-btn-default">
+                        <input type="radio" name="type" checked value="1">收入
+                    </label>
+                    <label class="am-btn am-btn-default">
+                        <input type="radio" name="type" value="2">支出
+                    </label>
                 </div>
             </div>
-            <div class="am-form-group">
-                <label class="am-u-sm-2 am-form-label">选择项目</label>
-                <div class="am-u-sm-3 am-padding-right-0">
-                    <select name="pid" data-am-selected="{btnWidth:'100%',searchBox:1}">
-                        <option value=""></option>
-                        {volist name="project" id="vo"}
-                        <option value="{$vo.id}">{$vo.subject}</option>
-                        {/volist}
-                    </select>
-                </div>
-                <div class="am-u-sm-7">
-                    <a href="{:url('projects/create_item')}" target="_blank"
-                       class="am-btn am-btn-default am-icon-plus"> 新增项目</a>
+        </div>
+        <div class="am-form-group">
+            <label class="am-u-sm-2 am-form-label">收款方</label>
+            <div class="am-u-sm-4 am-u-end">
+                <input type="text" name="payee" placeholder="用途描述"/>
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label class="am-u-sm-2 am-form-label">合计金额</label>
+            <div class="am-u-sm-2 am-u-end">
+                <input type="number" name="money" placeholder="合计金额"/>
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label class="am-u-sm-2 am-form-label">日期</label>
+            <div class="am-u-sm-2">
+                <input type="text" name="dateline" readonly
+                       value="{:date('Y-m-d')}" placeholder="yyyy-MM-dd HH:mm:ss" data-am-datepicker>
+            </div>
+            <span class="am-form-text">不选择则默认为当前时间</span>
+        </div>
+        <div class="am-form-group">
+            <label class="am-u-sm-2 am-form-label">支付方式</label>
+            <div class="am-u-sm-10">
+                <div class="am-btn-group" data-am-button>
+                    {volist name="payment" id="vo"}
+                    <label class="am-btn am-btn-default">
+                        <input type="radio" name="payment_id" {eq name="i" value="1"}checked{/eq} value="{$vo.payment_id}"> {$vo.payment_name}
+                    </label>
+                    {/volist}
                 </div>
             </div>
-            <div class="am-form-group">
-                <label class="am-u-sm-2 am-form-label">收支类型</label>
-                <div class="am-u-sm-6 am-u-end">
-                    <div class="am-btn-group" data-am-button>
-                        <label class="am-btn am-btn-default">
-                            <input type="radio" name="type" checked value="1">收入
-                        </label>
-                        <label class="am-btn am-btn-default">
-                            <input type="radio" name="type" value="2">支出
-                        </label>
-                    </div>
-                </div>
+        </div>
+        <div class="am-form-group">
+            <label class="am-u-sm-2 am-form-label">经办人</label>
+            <div class="am-u-sm-6 am-u-end">
+                <select name="uid" data-am-selected="{maxHeight:'200px',searchBox:1}">
+                   {volist name="userlist" id="vo"}
+                    <option value="{$vo.uid}">{$vo.username}</option>
+                   {/volist}
+                </select>
             </div>
-            <div class="am-form-group">
-                <label class="am-u-sm-2 am-form-label">收款方</label>
-                <div class="am-u-sm-4 am-u-end">
-                    <input type="text" name="payee" placeholder="用途描述"/>
-                </div>
+        </div>
+        <div class="am-form-group">
+            <label class="am-u-sm-2 am-form-label">凭据上传</label>
+            <div class="am-u-sm-10">
+                <div id="uploader"></div>
+                <input type="hidden" name="voucher" class="rval" value="">
+                <div class="am-uploader-preview"></div>
             </div>
-            <div class="am-form-group">
-                <label class="am-u-sm-2 am-form-label">合计金额</label>
-                <div class="am-u-sm-2 am-u-end">
-                    <input type="number" name="money" placeholder="合计金额"/>
-                </div>
+        </div>
+        <div class="am-form-group">
+            <div class="am-u-sm-10 am-u-sm-offset-2">
+                <div onclick="im.submit('.am-form',this)"  class="am-btn am-btn-primary am-icon-check"> 提交保存</div>
             </div>
-            <div class="am-form-group">
-                <label class="am-u-sm-2 am-form-label">日期</label>
-                <div class="am-u-sm-2">
-                    <input type="text" name="dateline" readonly
-                           value="{:date('Y-m-d')}" placeholder="yyyy-MM-dd HH:mm:ss" data-am-datepicker>
-                </div>
-                <span class="am-form-text">不选择则默认为当前时间</span>
-            </div>
-            <div class="am-form-group">
-                <label class="am-u-sm-2 am-form-label">支付方式</label>
-                <div class="am-u-sm-10">
-                    <div class="am-btn-group" data-am-button>
-                        {volist name="payment" id="vo"}
-                        <label class="am-btn am-btn-default">
-                            <input type="radio" name="payment_id" {eq name="i" value="1"}checked{/eq} value="{$vo.payment_id}"> {$vo.payment_name}
-                        </label>
-                        {/volist}
-                    </div>
-                </div>
-            </div>
-            <div class="am-form-group">
-                <label class="am-u-sm-2 am-form-label">经办人</label>
-                <div class="am-u-sm-6 am-u-end">
-                    <select name="uid" data-am-selected="{maxHeight:'200px',searchBox:1}">
-                       {volist name="userlist" id="vo"}
-                        <option value="{$vo.uid}">{$vo.username}</option>
-                       {/volist}
-                    </select>
-                </div>
-            </div>
-            <div class="am-form-group">
-                <label class="am-u-sm-2 am-form-label">凭据上传</label>
-                <div class="am-u-sm-10">
-                    <div id="uploader"></div>
-                    <input type="hidden" name="voucher" class="rval" value="">
-                    <div class="am-uploader-preview"></div>
-                </div>
-            </div>
-            <div class="am-form-group">
-                <div class="am-u-sm-10 am-u-sm-offset-2">
-                    <div onclick="im.submit('.am-form',this)"  class="am-btn am-btn-primary am-icon-check"> 提交保存</div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+        </div>
+    </form>
 {/block}

@@ -1,11 +1,10 @@
 {extend name="common"/}
 {block name="name"}员工列表{/block}
 {block name="content"}
-<section class="am-panel am-panel-default">
-    <header class="am-panel-hd">
+    <div class="am-margin-bottom">
         <span class="am-btn am-btn-primary am-btn-hollow am-icon-plus"
-              onclick="im.modal('#addUser',520)"> 添加员工</span>
-    </header>
+           onclick="im.modal('#addUser',520)"> 添加员工</span>
+    </div>
     <table class="am-table">
         <tbody>
         <tr>
@@ -26,8 +25,6 @@
         {/volist}
         </tbody>
     </table>
-</section>
-
 {/block}
 {block name="modal"}
 <div class="am-modal am-modal-confirm" tabindex="-1" id="addUser">
