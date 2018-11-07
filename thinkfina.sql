@@ -10,7 +10,7 @@ Target Server Type    : MariaDB
 Target Server Version : 100310
 File Encoding         : 65001
 
-Date: 2018-11-05 13:34:04
+Date: 2018-11-07 18:00:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -110,7 +110,7 @@ CREATE TABLE `raw_finance` (
   `dateline` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of raw_finance
@@ -123,6 +123,8 @@ INSERT INTO `raw_finance` VALUES ('5', '5', '5', '铝塑板购买费用', '1650.
 INSERT INTO `raw_finance` VALUES ('6', '5', '5', '钢材 购买 2根', '76.00', '2', '2', '荣申钢材', '', '1541388873', '1');
 INSERT INTO `raw_finance` VALUES ('7', '5', '5', '工人预支工资 ', '300.00', '2', '2', '工人', '', '1541388911', '1');
 INSERT INTO `raw_finance` VALUES ('8', '5', '7', '法恩莎PVC刻字款', '100.00', '2', '1', '老街子', '', '1541389027', '1');
+INSERT INTO `raw_finance` VALUES ('9', '5', '5', '奇睿科技门头结构胶玻璃胶', '370.00', '2', '2', '互惠胶业', '', '1541574437', '1');
+INSERT INTO `raw_finance` VALUES ('10', '5', '5', '计时器 购买费用', '60.00', '2', '2', '人民西路', '', '1541574472', '1');
 
 -- ----------------------------
 -- Table structure for raw_member
@@ -207,7 +209,7 @@ CREATE TABLE `raw_projects` (
   `message` longtext DEFAULT NULL,
   `status` int(11) DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='项目列表';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='项目列表';
 
 -- ----------------------------
 -- Records of raw_projects
@@ -218,6 +220,7 @@ INSERT INTO `raw_projects` VALUES ('4', 'wJN3JInB0LjT4541', '普洱奇睿科技�
 INSERT INTO `raw_projects` VALUES ('5', 'J9tG8FtLbGUj3160', '普洱奇睿科技有限公司门头安装制作', '普洱奇睿科技有限公司', '李总', '', '14000.00', '3', '1540882969', '1541487769', '2', '', '6');
 INSERT INTO `raw_projects` VALUES ('6', 'IPBuTrP32ryZ3214', '文一工程 泰临酒店', '普洱文一工程有限公司', '李总', '', '0.00', '3', '1540883168', '1541487968', '2', '', '8');
 INSERT INTO `raw_projects` VALUES ('7', 'HXzRW0hSGBcC8983', '悅安居法恩莎 pvc刻字', '美标卫浴', '谢队', '', '200.00', '3', '1541388932', '1541993732', '5', '&amp;lt;p&amp;gt;智能除臭&amp;amp;nbsp;&amp;lt;/p&amp;gt;', '8');
+INSERT INTO `raw_projects` VALUES ('8', 'U3rLXZMAGkSi4400', '亿达汽车服务中心门头', '亿达汽车服务中心门头', '黄总', '15154830003', '800.00', '3', '1541574351', '1542179151', '5', '&amp;lt;p&amp;gt;门头喷绘&amp;amp;nbsp;单透贴&amp;lt;/p&amp;gt;', '4');
 
 -- ----------------------------
 -- Table structure for raw_projects_item
@@ -319,12 +322,39 @@ CREATE TABLE `raw_quoted_products` (
   `supplier` varchar(120) DEFAULT NULL,
   `status` int(11) DEFAULT 1,
   PRIMARY KEY (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of raw_quoted_products
 -- ----------------------------
-INSERT INTO `raw_quoted_products` VALUES ('1', '普通喷绘布', '6.00', '20.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('1', '520喷绘布', '6.00', '18.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('2', '530喷绘布', '6.00', '20.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('3', '网格布', '15.00', '55.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('4', '刀刮布', '26.00', '75.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('5', '室内写真', '10.00', '40.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('6', '室内PP纸', '10.00', '45.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('7', '室内灯片', '16.00', '55.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('8', '户外写真', '15.00', '55.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('9', '户外PP纸', '15.00', '55.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('10', '户外灯片', '20.00', '60.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('11', '白胶车贴', '16.00', '55.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('12', '黑胶车贴', '18.00', '65.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('13', '单透贴', '16.00', '60.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('14', '反光膜', '25.00', '75.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('15', '金彩格', '28.00', '80.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('16', '室内写真KT板', '20.00', '75.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('17', '户外写真KT板', '26.00', '85.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('18', '超卡板', '13.00', '45.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('19', '5mmPVC', '30.00', '60.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('20', '8mmPVC板', '50.00', '100.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('21', '10mmPVC板', '60.00', '120.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('22', '15mmPVC板', '90.00', '180.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('23', '镶边条 小', '3.00', '9.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('24', '镶边条 大', '6.00', '18.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('25', '镶边条 金色', '6.00', '18.00', '㎡', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('26', '布标 70cm', '3.00', '25.00', 'm', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('27', '布标 90cm', '4.00', '30.00', 'm', '赓达数码', '1');
+INSERT INTO `raw_quoted_products` VALUES ('28', '钢架扣板', '50.00', '120.00', '㎡', '昆明', '1');
 
 -- ----------------------------
 -- Table structure for raw_working_hours

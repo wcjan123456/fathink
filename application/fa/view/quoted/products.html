@@ -1,28 +1,35 @@
 {extend name="common"/}
 {block name="content"}
     <h3 class="am-page-name">产品报价</h3>
-<div><a href="javascript:im.modal('#add',450)"
-        class="am-btn am-btn-primary am-icon-plus am-btn-hollow"> 新建报价</a></div>
-<table class="am-table">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>名称</th>
-        <th>金额</th>
-        <th>项数</th>
-        <th>管理</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>表格内容1</td>
-        <td>表格内容1</td>
-        <td>表格内容1</td>
-        <td>表格内容1</td>
-        <td>表格内容1</td>
-    </tr>
-    </tbody>
-</table>
+    <div class="am-margin-bottom">
+        <a href="javascript:im.modal('#add',450)"
+        class="am-btn am-btn-default am-icon-plus"> 产品报价</a>
+    </div>
+    <ul class="am-avg-sm-2 am-avg-lg-6 am-avg-md-4 am-space-rem">
+    {volist name="list" id="vo"}
+        <li>
+            <section class="am-panel am-panel-default am-hover-show">
+                <header class="am-panel-hd">
+                    {$vo.title}
+                </header>
+                <ul class="am-list am-list-static">
+                    <li>进价：<b class="am-text-danger">￥{$vo.in_price}</b>元/{$vo.unit}</li>
+                    <li>售价：<b class="am-text-danger">￥{$vo.out_price}</b>元/{$vo.unit}</li>
+                    <li>供货商：{$vo.supplier}</li>
+                </ul>
+                <div class="am-panel-popover am-animation-slide-bottom">
+                    <div class="am-u-sm-6 am-border-right">
+                        <a href="{:url('product_editor')}?id={$vo.pid}" class="am-icon-edit"> 编辑</a>
+                    </div>
+                    <div class="am-u-sm-6">
+                        <a href="javascript:;" class="am-icon-trash-o">删除</a>
+                    </div>
+                </div>
+            </section>
+        </li>
+    {/volist}
+    </ul>
+    {$list->render()|raw}
 {/block}
 {block name="modal"}
 <div class="am-modal am-modal-confirm" tabindex="-1" id="add">

@@ -431,3 +431,30 @@ ul.am-dropdown-content>li>a{
 .am-color-7{background-color:#660033 !important; }
 .am-color-8{background-color:#003300 !important; }
 .am-color-9{background-color:#669933 !important; }
+.am-hover-show {
+    position: relative;
+}
+
+.am-panel-popover {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    background-color: #fff;
+    border-top: 1px solid #f0f0f0;
+    display: none;
+}
+.am-panel-popover a {
+    display: block;
+    padding: .5rem 0;
+}
+.am-hover-show:hover{
+    border-color: #ddd;
+    transition-duration: 400ms;
+    box-shadow: 0 0 8px rgba(0,0,0,.1);
+}
+.am-hover-show:hover .am-panel-popover{
+    display: block;
+    transition-duration: 400ms;
+}

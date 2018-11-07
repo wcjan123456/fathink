@@ -31,8 +31,17 @@ class Quoted extends Common
         }
     }
 
+    /**
+     * 产品报价首页
+     * @return mixed
+     * @throws \think\exception\DbException
+     */
     public function products()
     {
+        $quotedProducts = new QuotedProducts();
+        $list = $quotedProducts->getPage();
+        $this->assign('list',$list);
+
         return $this->fetch();
     }
 

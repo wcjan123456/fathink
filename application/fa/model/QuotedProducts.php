@@ -59,7 +59,7 @@ class QuotedProducts extends Model
             $map[]=['title','like',"%$title%"];
         }
         $map[] = ['status','=',1];
-        $data = $this->where($map)->order('pid','desc')->paginate(20);
+        $data = $this->where($map)->order('pid','desc')->paginate(18);
         return $data;
     }
 
