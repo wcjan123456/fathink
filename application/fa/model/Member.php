@@ -143,19 +143,17 @@ class Member extends Model
         }
         // 更新用户登陆信息
         $userUpData = [
-            'uid'=> $user['uid'],
             'last_login_time' => time(),
             'last_login_ip'=> Request::ip(),
             'ticket'=> $this->ticket
         ];
-        $upStatus = $this->update($userUpData);
+        $upStatus = $this->where('uid',$user['uid'])->update($userUpData);
         if($upStatus){
             $user = $this->where('uid',$user['uid'])->find();
             //写入session 用户信息
-            Session::set($type.'_uid',$user['uid']);
             Session::set($type.'_user',$user);
             //写入单点登陆ticket
-            Cookie::set('member_login_titcket',$data['ticket']);
+            Cookie::set('member_login_titcket',$this->ticket);
             return result(200,'登陆成功，欢迎回来',url('index/index'));
         }else{
             return result(403,'验证成功但是无法更新用户数据');

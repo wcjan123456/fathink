@@ -67,7 +67,7 @@
 <section class="login-box">
     <div class="login-hd">后台管理登录</div>
     <div class="login-bd">
-        <form action="action" method="POST" role="form" class="am-form">
+        <form method="POST" role="form" class="am-form">
             <div class="am-form-group">
                 <span class="am-icon-fw am-icon-user"></span>
                 <input type="text" name="username" class="am-input-lg" placeholder="用户名/手机">
@@ -82,11 +82,11 @@
                     <input type="text" name="code" class="am-input-lg" placeholder="验证码">
                 </div>
                 <div class="am-u-sm-5 am-padding-left-0">
-                    <img src="{:url('api/handle/verify')}" alt="">
+                    <img src="{:url('api/handle/verify')}" id="code" onclick="im.verify(this,'account')">
                 </div>
             </div>
             <div class="am-form-group">
-                <button type="submit" class="am-btn am-btn-primary login-btn am-icon-check"> 安全登录</button>
+                <div onclick="accountLogin()" class="am-btn am-btn-primary login-btn am-icon-check"> 安全登录</div>
             </div>
         </form>
         <div class="login-message">
@@ -108,6 +108,28 @@
 <script src="/static/js/amazeui.min.js"></script>
 <script>let atoken= "{:staticVersion()}"</script>
 <script src="/static/js/fa.js"></script>
-{block name="js"}{/block}
+<script>
+    let loginUrl = "{:url('login/login')}";
+    function accountLogin(){
+        let form = $('.am-form'),
+            data = form.serialize(),
+            username = form.find('[name="username"]').val(),
+            password = form.find('[name="password"]').val(),
+            code = form.find('[name="code"]').val();
+        if(!username || !password || !code){
+            im.showAlert(403,'用户名 密码或是验证码不能为空');
+            return false;
+        }else {
+            $.post(loginUrl,data,function(res){
+               if(res.code === 200){
+                   im.showAlert(200,'登录成功，欢迎回来~~~~',"/fa/index?spm"+atoken)
+               }else {
+                   im.verify('#code','loginAction');
+                   im.showAlert(res.cdeo,res.msg);
+               }
+            })
+        }
+    }
+</script>
 </body>
 </html>
