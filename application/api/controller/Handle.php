@@ -1,6 +1,7 @@
 <?php
 namespace app\api\controller;
 
+use think\captcha\Captcha;
 use think\Controller;
 use think\facade\Cache;
 
@@ -72,5 +73,22 @@ class Handle extends Controller
     {
         $file = input('get.file');
         @unlink('./'.$file);
+    }
+
+
+    public function verify()
+    {
+        $config =    [
+            // 验证码字体大小
+            'fontSize'    =>    18,
+            // 验证码位数
+            'length'      =>    4,
+            'imageH'      =>    36,
+            'imageW'      =>    118,
+            'useCurve'  =>  false
+        ];
+        $captcha = new Captcha($config);
+
+        return $captcha->entry();
     }
 }

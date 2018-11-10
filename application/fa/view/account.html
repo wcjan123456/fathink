@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>项目管理系统-FaThink</title>
+    <link rel="stylesheet" href="/static/css/e356600b3a5de3c6cb1dbb02ef014f78.css">
+    <link rel="stylesheet" href="/static/css/fa.css">
+    <style>
+        .login-box {
+            width: 340px;
+            background-color: #fff;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-left: -170px;
+            margin-top: -280px;
+            border:1px solid #f0f0f0;
+            border-radius: 4px;
+            height: 460px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.06);
+        }
+        .login-hd {
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            background-color: #f0f0f0;
+            font-size: 28px;
+            font-weight: 300;
+        }
+        .am-form-group{
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        .am-icon-fw {
+            position: absolute;
+            top: 7px;
+            left: 7px;
+            color: #666;
+        }
+        .login-bd{
+            padding: 1.5rem 2rem 5rem 2rem;
+        }
+        .am-input-lg {
+            padding-left: 2rem !important;
+        }
+        .login-btn{
+            background: linear-gradient(to right, #0953ff, #2b85e4,#0953ff);
+            display: block;
+            padding: .925rem 0;
+            width: 100%;
+            border:none;
+        }
+        .login-message {
+            margin-top:2rem;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 1rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+<section class="login-box">
+    <div class="login-hd">后台管理登录</div>
+    <div class="login-bd">
+        <form action="action" method="POST" role="form" class="am-form">
+            <div class="am-form-group">
+                <span class="am-icon-fw am-icon-user"></span>
+                <input type="text" name="username" class="am-input-lg" placeholder="用户名/手机">
+            </div>
+            <div class="am-form-group">
+                <span class="am-icon-fw am-icon-unlock-alt"></span>
+                <input type="password" name="password" class="am-input-lg" placeholder="密码">
+            </div>
+            <div class="am-form-group am-g">
+                <div class="am-u-sm-7 am-padding-left-0">
+                    <span class="am-icon-fw am-icon-image"></span>
+                    <input type="text" name="code" class="am-input-lg" placeholder="验证码">
+                </div>
+                <div class="am-u-sm-5 am-padding-left-0">
+                    <img src="{:url('api/handle/verify')}" alt="">
+                </div>
+            </div>
+            <div class="am-form-group">
+                <button type="submit" class="am-btn am-btn-primary login-btn am-icon-check"> 安全登录</button>
+            </div>
+        </form>
+        <div class="login-message">
+            <ul>
+                <li>使用您的账户名称或是姓名、手机号码进行登录</li>
+                <li>如果看不清验证码请刷新至能清楚显示验证码</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<div class="am-default bg-70"></div>
+<div class="am-alert-group">
+    <div class="am-alert am-alert-danger am-animation-slide-top"></div>
+    <div class="am-alert am-alert-warning am-animation-slide-top"></div>
+    <div class="am-alert am-alert-success am-animation-slide-top"></div>
+    <div class="am-alert am-alert-notice am-animation-slide-top"></div>
+</div>
+<script src="/static/js/jquery-1.12.4.min.js"></script>
+<script src="/static/js/amazeui.min.js"></script>
+<script>let atoken= "{:staticVersion()}"</script>
+<script src="/static/js/fa.js"></script>
+{block name="js"}{/block}
+</body>
+</html>
