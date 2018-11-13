@@ -20,9 +20,8 @@ class Common extends Controller
         $this->getUserInfo();
 
         $controller = strtolower(Request::controller());
-        $this->assign('controller',$controller);
         $action= strtolower(Request::action());
-        $this->assign('action',$action);
+        $this->assign('localname','fa/'.$controller.'/'.$action);
 
         $auth = new \app\fa\model\Authorize();
         $menus= $auth->getList(3);

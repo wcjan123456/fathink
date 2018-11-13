@@ -47,8 +47,7 @@ input+.am-input-group-label{
     line-height: 60px;
     min-height: 60px;
     left: 180px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    border-bottom: none;
+    border-bottom-color: #f0f0f0;
 
 }
 .am-fixd-top-45 {
@@ -94,6 +93,7 @@ p,*+p{
     overflow: hidden;
     z-index: 1000;
     background-color: #f6f8f9;
+    border-right: 1px solid #f0f0f0;
 }
 .am-aside-brand {
     padding:0 1rem;
@@ -103,42 +103,39 @@ p,*+p{
     height: 60px;
     line-height: 60px;
     vertical-align: middle;
-    background-color: rgba(225,225,225,.3);
-}
-.aside>.am-nav{
-    margin: 1rem;
-}
-.aside>.am-nav>li+li{
-    margin-top: 0;
+    background-color: #f0f0f0;
 }
 .aside>.am-nav>li>a{
     white-space: nowrap;
-    height: 40px;
-    line-height: 40px;
-    padding: 0 1em;
-    border-radius: 3px;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 1em 0 2rem;
+    border-radius: 0;
+    font-size: 14px;
 }
 .aside>.am-nav>li>a>.am-icon-fw{
-    font-size: 14px;
-    background-color: #aaa;
-    height: 26px;
-    width: 26px;
-    border-radius: 26px;
-    line-height: 26px;
-    color: #fff;
-    margin-right: .75rem;
+    font-size: 18px;
+    color: #7C878E;
+    margin-right: .5rem;
 }
 .aside>.am-nav>li>a:hover,
-.aside>.am-nav>li>a:focus,
-.aside>.am-nav>li.am-active>a{
-    background-color: #e6e6e6;
+.aside>.am-nav>li>a:focus{
+    background-color: #f0f0f0;
     transition-duration: 500ms;
-    color: #1890ff;
 }
-.aside>.am-nav>li>a:focus>.am-icon-fw,
-.aside>.am-nav>li>a:hover>.am-icon-fw{
-    background-color: #1890ff;
-    transition-duration: 500ms;
+.aside>.am-nav>li.am-active>a>.am-icon-fw,
+.aside>.am-nav>li.am-active>a{
+    color: #0953ff;
+    background-color: #f0f0f0;
+}
+.aside>.am-nav>li.am-active>a:before{
+    position: absolute;
+    border-left: 4px solid #0953ff;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    content: "";
+    display: inline-block;
 }
 .aside-sub{
     position: fixed;
@@ -149,7 +146,7 @@ p,*+p{
     z-index: 999;
     padding: 0 .25rem;
     background-color: #fff;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-bottom: 1px solid #f0f0f0;
 }
 .aside-sub>.am-nav>li>a {
     height: 40px;
@@ -163,6 +160,18 @@ p,*+p{
 }
 .aside-sub>.am-nav>li+li{
     margin: 0;
+}
+.aside-sub>.am-nav>li.am-active>a{
+    background-color: transparent;
+    color: #0953ff;
+}
+.aside-sub>.am-nav>li.am-active>a:before{
+    position: absolute;
+    bottom: 0;
+    left: .75rem;
+    right: .75rem;
+    border-bottom: 2px solid #0953ff;
+    content: "";
 }
 .main{
     position: fixed;

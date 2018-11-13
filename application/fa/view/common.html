@@ -50,9 +50,9 @@
     </div>
     <ul class="am-nav">
         {volist name="menus" id="vo"}
-        <li>
+        <li {eq name="vo.id" value="$toplocal.id"}class="am-active"{/eq}>
             <a href="{$vo.name|reurl}?spm={$vo.id|md5}">
-                <i class="am-icon-fw {$vo.icon} am-color-{$i}"></i> <span>{$vo.title}</span>
+                <i class="am-icon-fw {$vo.icon}"></i> <span>{$vo.title}</span>
             </a>
         </li>
         {/volist}
@@ -66,7 +66,9 @@
         {/volist}
         {else/}
         {volist name="sub_menus" id="vo"}
-        <li><a href="{$vo.name|url}">{$vo.title}</a></li>
+        <li {eq name="vo.name" value="$localname"}class="am-active"{/eq}>
+        <a href="{$vo.name|url}">{$vo.title}</a>
+        </li>
         {/volist}
         {/empty}
     </ul>
