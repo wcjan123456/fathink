@@ -43,6 +43,7 @@ class Handle extends Controller
         }else{
             $this->result('',500,$file->getError());
         }
+        return null;
     }
 
     /**
