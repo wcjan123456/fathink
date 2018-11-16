@@ -107,6 +107,10 @@ p,*+p{
 .am-aside-brand>a {
     color: #fff;
     font-weight: 400;
+    display: block;
+    vertical-align: middle;
+    height: 50px;
+    line-height: 50px;
 }
 .aside>.am-nav>li>a{
     white-space: nowrap;
@@ -150,7 +154,7 @@ p,*+p{
     height: 40px;
     z-index: 999;
     padding: 0 .25rem;
-    background-color: #fff;
+    background-color: #f6f8fa;
     border-bottom: 1px solid #f0f0f0;
 }
 .aside-sub>.am-nav>li>a {
