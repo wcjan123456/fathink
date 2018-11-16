@@ -132,4 +132,13 @@ class Projects extends Model
         $data['hash'] = guid();
         return $data;
     }
+    public function edProjectStatus(){
+        $data = Request::post();
+        $ret = $this->where('id',$data['id'])->setField('status',$data['status']);
+        if($ret){
+            return result(200,'更新成功');
+        }else{
+            return result(500,'更新失败');
+        }
+    }
 }

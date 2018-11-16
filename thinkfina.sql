@@ -10,7 +10,7 @@ Target Server Type    : MariaDB
 Target Server Version : 100310
 File Encoding         : 65001
 
-Date: 2018-11-07 18:00:48
+Date: 2018-11-16 17:06:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -45,14 +45,13 @@ INSERT INTO `raw_authorize` VALUES ('7', '5', '工时管理', 'fa/finance/man_ho
 INSERT INTO `raw_authorize` VALUES ('8', '5', '资金流', 'fa/finance/management', 'am-icon-btc', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('9', '5', '财务报表', 'fa/finance/statements', 'am-icon-bar-chart', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('10', '0', '部门管理', 'fa/member', 'am-icon-graduation-cap', '1', '0', '0', '1');
-INSERT INTO `raw_authorize` VALUES ('11', '0', '客户关系', 'fa/member/index', 'am-icon-sitemap', '1', '1', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('12', '0', '报价管理', 'fa/quoted', 'am-icon-rocket', '1', '1', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('13', '0', '文档管理', 'fa/documents', 'am-icon-folder-open-o', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('14', '0', '权限管理', 'fa/authorize', 'am-icon-sliders', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('15', '0', '全局设置', 'fa/settings', 'am-icon-cogs', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('16', '14', '权限菜单', 'fa/authorize/index', 'am-icon-bars', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('17', '14', '管理组', 'fa/authorize/groups', 'am-icon-users', '1', '0', '0', '1');
-INSERT INTO `raw_authorize` VALUES ('18', '14', '管理日志', 'fa/authorize/index', 'am-icon-file-text-o', '1', '0', '0', '1');
+INSERT INTO `raw_authorize` VALUES ('18', '14', '管理日志', 'fa/authorize/m_logs', 'am-icon-file-text-o', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('19', '10', '部门设置', 'fa/member/department', 'am-icon-home', '1', '0', '0', '1');
 INSERT INTO `raw_authorize` VALUES ('20', '10', '员工列表', 'fa/member/index', 'am-icon-list', '1', '1', '1', '1');
 INSERT INTO `raw_authorize` VALUES ('21', '5', '工资表', 'fa/finance/wages', 'am-icon-table', '1', '1', '3', '1');
@@ -110,7 +109,7 @@ CREATE TABLE `raw_finance` (
   `dateline` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of raw_finance
@@ -125,6 +124,10 @@ INSERT INTO `raw_finance` VALUES ('7', '5', '5', '工人预支工资 ', '300.00'
 INSERT INTO `raw_finance` VALUES ('8', '5', '7', '法恩莎PVC刻字款', '100.00', '2', '1', '老街子', '', '1541389027', '1');
 INSERT INTO `raw_finance` VALUES ('9', '5', '5', '奇睿科技门头结构胶玻璃胶', '370.00', '2', '2', '互惠胶业', '', '1541574437', '1');
 INSERT INTO `raw_finance` VALUES ('10', '5', '5', '计时器 购买费用', '60.00', '2', '2', '人民西路', '', '1541574472', '1');
+INSERT INTO `raw_finance` VALUES ('11', '5', '8', '脚手架租赁', '63.00', '2', '2', '苏中脚手架', '', '1541837726', '1');
+INSERT INTO `raw_finance` VALUES ('12', '5', '5', '脚手架租赁费用', '360.00', '2', '2', '苏中脚手架', '', '1541837750', '1');
+INSERT INTO `raw_finance` VALUES ('13', '5', '9', '周海蔚-10月份工资', '3400.00', '2', '1', '周海蔚', '', '1542358768', '1');
+INSERT INTO `raw_finance` VALUES ('14', '5', '9', '王斌-10月份工资', '3400.00', '2', '1', '王斌', '', '1542358796', '1');
 
 -- ----------------------------
 -- Table structure for raw_member
@@ -151,7 +154,7 @@ CREATE TABLE `raw_member` (
 -- ----------------------------
 -- Records of raw_member
 -- ----------------------------
-INSERT INTO `raw_member` VALUES ('1', '1qtHmKEn7VmE9645', 'admin', '17787937708', 'c1e00a7504e6ce17dbc111ba4679e75c9faac99e', null, 'WNsISq7C2TEG2341', '8', '1473672824', '127.0.0.1', '1528512366', '::1', '1');
+INSERT INTO `raw_member` VALUES ('1', '1qtHmKEn7VmE9645', 'admin', '17787937708', 'c1e00a7504e6ce17dbc111ba4679e75c9faac99e', null, 'APyhGiZIWRQ27375', '8', '1473672824', '127.0.0.1', '1542357375', '::1', '1');
 INSERT INTO `raw_member` VALUES ('2', 'XrL0ksEPxmwi4678', '周海蔚', '17787922099', 'b70f98782608df1be90c831ca1d054df91289dc2', null, null, '7', null, null, null, null, '1');
 INSERT INTO `raw_member` VALUES ('3', 'F0BCVzsFQMCV4853', '王建', '18083880499', '38b840e72e2d29235145727fff93b895d69643b7', null, 'Q9mrKKCaYk614853', '13', '1538234853', '::1', null, null, '1');
 INSERT INTO `raw_member` VALUES ('4', 'y5rNQWky0Rt75305', '徐军', '14787279089', '2d6221dc7037cb17b588dcf9140d9cce4b3e00ad', null, 'fZMZ6tjAzSu55305', '14', '1538235305', '::1', null, null, '1');
@@ -209,18 +212,19 @@ CREATE TABLE `raw_projects` (
   `message` longtext DEFAULT NULL,
   `status` int(11) DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='项目列表';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='项目列表';
 
 -- ----------------------------
 -- Records of raw_projects
 -- ----------------------------
 INSERT INTO `raw_projects` VALUES ('2', 'bz5hSrdpFY2M7540', '中梁壹号院喷绘围挡', '重庆贵华建筑有限公司', '张经理', '', '26000.00', '3', '1538237485', '1538842285', '2', '&lt;p&gt;喷绘，&lt;span style=&quot;font-size: 1rem;&quot;&gt;彩钢瓦围挡&lt;/span&gt;&lt;/p&gt;', '8');
-INSERT INTO `raw_projects` VALUES ('3', 'lXZrtw8hVNwu3089', '高家寨主席哆咪嗦钢琴教师 喷绘 pvc字', '高家寨主席', '高家寨主席', '13987951556', '1848.00', '3', '1538064000', '1539747755', '2', '&lt;p&gt;PVC字+亚克力面板&lt;br&gt;喷绘布&amp;nbsp;侧边以前创文位置 380x450&lt;/p&gt;', '5');
-INSERT INTO `raw_projects` VALUES ('4', 'wJN3JInB0LjT4541', '普洱奇睿科技有限公司P2.5电子屏', '普洱奇睿科技有限公司', '李总', '', '32133.00', '3', '1539744377', '1540349177', '2', '', '5');
-INSERT INTO `raw_projects` VALUES ('5', 'J9tG8FtLbGUj3160', '普洱奇睿科技有限公司门头安装制作', '普洱奇睿科技有限公司', '李总', '', '14000.00', '3', '1540882969', '1541487769', '2', '', '6');
+INSERT INTO `raw_projects` VALUES ('3', 'lXZrtw8hVNwu3089', '高家寨主席哆咪嗦钢琴教师 喷绘 pvc字', '高家寨主席', '高家寨主席', '13987951556', '1848.00', '3', '1538064000', '1539747755', '2', '&lt;p&gt;PVC字+亚克力面板&lt;br&gt;喷绘布&amp;nbsp;侧边以前创文位置 380x450&lt;/p&gt;', '9');
+INSERT INTO `raw_projects` VALUES ('4', 'wJN3JInB0LjT4541', '普洱奇睿科技有限公司P2.5电子屏', '普洱奇睿科技有限公司', '李总', '', '32133.00', '3', '1539744377', '1540349177', '2', '', '8');
+INSERT INTO `raw_projects` VALUES ('5', 'J9tG8FtLbGUj3160', '普洱奇睿科技有限公司门头安装制作', '普洱奇睿科技有限公司', '李总', '', '14000.00', '3', '1540882969', '1541487769', '2', '', '8');
 INSERT INTO `raw_projects` VALUES ('6', 'IPBuTrP32ryZ3214', '文一工程 泰临酒店', '普洱文一工程有限公司', '李总', '', '0.00', '3', '1540883168', '1541487968', '2', '', '8');
 INSERT INTO `raw_projects` VALUES ('7', 'HXzRW0hSGBcC8983', '悅安居法恩莎 pvc刻字', '美标卫浴', '谢队', '', '200.00', '3', '1541388932', '1541993732', '5', '&amp;lt;p&amp;gt;智能除臭&amp;amp;nbsp;&amp;lt;/p&amp;gt;', '8');
-INSERT INTO `raw_projects` VALUES ('8', 'U3rLXZMAGkSi4400', '亿达汽车服务中心门头', '亿达汽车服务中心门头', '黄总', '15154830003', '800.00', '3', '1541574351', '1542179151', '5', '&amp;lt;p&amp;gt;门头喷绘&amp;amp;nbsp;单透贴&amp;lt;/p&amp;gt;', '4');
+INSERT INTO `raw_projects` VALUES ('8', 'U3rLXZMAGkSi4400', '亿达汽车服务中心门头', '亿达汽车服务中心门头', '黄总', '15154830003', '800.00', '3', '1541574351', '1542179151', '5', '&amp;lt;p&amp;gt;门头喷绘&amp;amp;nbsp;单透贴&amp;lt;/p&amp;gt;', '8');
+INSERT INTO `raw_projects` VALUES ('9', 'Qv19w5KKzRJ38718', '工资支付', '普洱万维广告有限公司', '普洱万维广告有限公司', '17787937708', '0.00', '3', '1542358676', '1542963476', '5', '&amp;lt;p&amp;gt;日常工资流水记账&amp;lt;/p&amp;gt;', '6');
 
 -- ----------------------------
 -- Table structure for raw_projects_item

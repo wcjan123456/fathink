@@ -40,7 +40,7 @@
         <colgroup>
             <col width="50">
             <col>
-            <col width="300">
+            <col>
             <col width="150" align="center">
             <col width="80" align="center">
             <col width="180">
@@ -60,14 +60,16 @@
         <tr>
             <td>
                 {eq name="vo.type" value="1"}
-                <span class="am-icon-btn am-success">收</span>
+                <span class="am-icon-btn am-success am-radius">收</span>
                 {else/}
-                <span class="am-icon-btn am-warning">支</span>
+                <span class="am-icon-btn am-warning am-radius">支</span>
                 {/eq}
             </td>
             <td>
                 <div class="am-text-lg">{$vo.title}</div>
-                <div class="am-text-sm am-text-muted">{$vo.payment_name}支付</div>
+                <div class="am-text-sm am-text-muted">
+                    <img src="{$vo.payment_icon}" width="18" class="am-circle"> {$vo.payment_name}支付
+                </div>
             </td>
             <td>
                 {$vo.subject}

@@ -92,8 +92,7 @@ p,*+p{
     width: 180px;
     overflow: hidden;
     z-index: 1000;
-    background-color: #f6f8f9;
-    border-right: 1px solid #f0f0f0;
+    background-color: #2e3e4e;
 }
 .am-aside-brand {
     padding:0 1rem;
@@ -103,7 +102,11 @@ p,*+p{
     height: 60px;
     line-height: 60px;
     vertical-align: middle;
-    background-color: #f0f0f0;
+    background-color: #263441;
+}
+.am-aside-brand>a {
+    color: #fff;
+    font-weight: 400;
 }
 .aside>.am-nav>li>a{
     white-space: nowrap;
@@ -112,21 +115,23 @@ p,*+p{
     padding: 0 1em 0 2rem;
     border-radius: 0;
     font-size: 14px;
+    color: #ced4da;
 }
 .aside>.am-nav>li>a>.am-icon-fw{
     font-size: 18px;
-    color: #7C878E;
+    color: #ced4da;
     margin-right: .5rem;
 }
 .aside>.am-nav>li>a:hover,
 .aside>.am-nav>li>a:focus{
-    background-color: #f0f0f0;
+    background-color:#263441;
+    color: #fff;
     transition-duration: 500ms;
 }
 .aside>.am-nav>li.am-active>a>.am-icon-fw,
 .aside>.am-nav>li.am-active>a{
-    color: #0953ff;
-    background-color: #f0f0f0;
+    color: #fff;
+    background-color: #263441;
 }
 .aside>.am-nav>li.am-active>a:before{
     position: absolute;
@@ -180,7 +185,7 @@ p,*+p{
     right: 0;
     bottom: 0;
     overflow-y: auto;
-    padding: 1rem;
+    padding: 2rem;
     background-color: #fff;
     border-radius: 4px 0 0 0;
 }

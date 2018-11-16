@@ -117,6 +117,16 @@ class Projects extends Common
 
         return $this->fetch();
     }
+
+    /**
+     * 更新项目状态
+     * @return array
+     */
+    public function ed_project_status(){
+        $project = new \app\fa\model\Projects();
+        $result = $project->edProjectStatus();
+        return $result;
+    }
     public function report(){
         return $this->fetch();
     }

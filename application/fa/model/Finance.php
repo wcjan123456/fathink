@@ -88,6 +88,7 @@ class Finance extends Model
         $payment = Config::get('payment');
         foreach ($data as $item=>$value){
             $data[$item]['payment_name'] = $payment[$value['payment_id']-1]['payment_name'];
+            $data[$item]['payment_icon'] = $payment[$value['payment_id']-1]['icon'];
         }
         return $data;
     }

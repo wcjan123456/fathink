@@ -3,12 +3,12 @@
 return [
     //支付方式配置
     'payment' => [
-        ['payment_id' => 1, 'payment_name' => '现金'],
-        ['payment_id' => 2, 'payment_name' => '微信'],
-        ['payment_id' => 3, 'payment_name' => '支付宝'],
-        ['payment_id' => 4, 'payment_name' => '对公'],
-        ['payment_id' => 5, 'payment_name' => '刷卡'],
-        ['payment_id' => 6, 'payment_name' => '其他']
+        ['payment_id' => 1, 'payment_name' => '现金','icon'=>'/static/icon/cash.svg'],
+        ['payment_id' => 2, 'payment_name' => '微信','icon'=>'/static/icon/wxpay.svg'],
+        ['payment_id' => 3, 'payment_name' => '支付宝','icon'=>'/static/icon/alipay.svg'],
+        ['payment_id' => 4, 'payment_name' => '对公','icon'=>'/static/icon/company.svg'],
+        ['payment_id' => 5, 'payment_name' => '刷卡','icon'=>'/static/icon/cardpay.svg'],
+        ['payment_id' => 6, 'payment_name' => '其他','icon'=>'/static/icon/other.svg']
     ],
     //项目紧急程度配置
     'projectLevel'=>[
