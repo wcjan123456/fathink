@@ -41,6 +41,9 @@ input+.am-input-group-label{
 .am-border-top{
     border-top: 1px solid #e5e5e5;
 }
+.am-switch{
+    margin-top: 6px;
+}
 .am-topbar{
     background-color: #fff;
     height: 60px;
