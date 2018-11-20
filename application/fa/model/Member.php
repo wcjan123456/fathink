@@ -6,6 +6,8 @@ namespace app\fa\model;
  * Date: 2017/10/25
  * Time: 16:24
  */
+
+use think\Db;
 use think\facade\Cache;
 use think\Model;
 use think\facade\Request;
@@ -150,6 +152,7 @@ class Member extends Model
         $upStatus = $this->where('uid',$user['uid'])->update($userUpData);
         if($upStatus){
             $user = $this->where('uid',$user['uid'])->find();
+
             //写入session 用户信息
             Session::set($type.'_user',$user);
             //写入单点登陆ticket
