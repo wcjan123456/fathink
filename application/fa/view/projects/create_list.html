@@ -57,7 +57,11 @@
     <div class="am-form-group">
         <label  class="am-u-sm-2 am-form-label">合计金额</label>
         <div class="am-u-sm-2 am-u-end">
-            <input type="number" name="total_price" placeholder="合计金额"/>
+            <div class="am-input-group am-margin-bottom-0">
+                <span class="am-input-group-label">￥</span>
+                <input type="number" name="total_price" value="0" placeholder="￥">
+                <span class="am-input-group-label">.00</span>
+            </div>
         </div>
     </div>
     <div class="am-form-group">

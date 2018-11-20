@@ -1,0 +1,104 @@
+<div class="am-modal am-modal-confirm" tabindex="-1" id="add">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd"><span class="am-icon-plus"></span> 添加项目</div>
+        <div class="am-modal-bd">
+            <form class="am-form am-form-horizontal" action="{:url('create_item')}" id="addForm">
+                <div class="am-form-group">
+                    <label class="am-u-sm-2 am-form-label">项目名称</label>
+                    <div class="am-u-sm-10">
+                        <input type="text" name="subject" placeholder="项目名称" autocomplete="off">
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label class="am-u-sm-2 am-form-label">甲方</label>
+                    <div class="am-u-sm-10">
+                        <div class="am-input-group">
+                            <input type="text" name="customer" placeholder="甲方单位名称">
+                            <div class="am-input-group-btn">
+                                <span class="am-btn am-btn-default am-icon-check-square-o"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label class="am-u-sm-2 am-form-label">甲方负责人</label>
+                    <div class="am-u-sm-5 am-padding-right-0">
+                        <input type="text" name="customer_pm" placeholder="甲方单位负责人">
+                    </div>
+                    <div class="am-u-sm-3">
+                        <input type="text" name="customer_mobile" placeholder="联系方式">
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label class="am-u-sm-2 am-form-label">合同金额</label>
+                    <div class="am-u-sm-4">
+                        <div class="am-input-group am-margin-bottom-0">
+                            <span class="am-input-group-label">￥</span>
+                            <input type="number" name="price" value="0" placeholder="￥">
+                            <span class="am-input-group-label">.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label class="am-u-sm-2 am-form-label">紧急程度</label>
+                    <div class="am-u-sm-10">
+                        <div class="am-btn-group" data-am-button>
+                            <label class="am-btn am-btn-default">
+                                <input type="radio" name="level" value="1">非常紧急
+                            </label>
+                            <label class="am-btn am-btn-default">
+                                <input type="radio" name="level" value="2">紧急
+                            </label>
+                            <label class="am-btn am-btn-default">
+                                <input type="radio" name="level" value="3" checked>一般
+                            </label>
+                            <label class="am-btn am-btn-default">
+                                <input type="radio" name="level" value="4">可延后
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label class="am-u-sm-2 am-form-label">接单日期</label>
+                    <div class="am-u-sm-4">
+                        <input type="text" name="dateline" readonly
+                               value="{:date('Y-m-d H:i:s')}" placeholder="yyyy-MM-dd HH:mm:ss" data-am-datepicker>
+                    </div>
+                    <span class="am-text-muted">默认添加时间即为接单日期</span>
+                </div>
+                <div class="am-form-group">
+                    <label class="am-u-sm-2 am-form-label">完工日期</label>
+                    <div class="am-u-sm-4">
+                        <input type="text" name="end_time" readonly  value="{$date}"
+                               placeholder="yyyy-MM-dd HH:mm:ss" data-am-datepicker>
+                    </div>
+                    <span class="am-text-muted">默认+7天为完工日期，详情选择完工日期</span>
+                </div>
+                <div class="am-form-group">
+                    <label class="am-u-sm-2 am-form-label">项目经理</label>
+                    <div class="am-u-sm-4">
+                        <select name="pm_id" data-am-selected="{maxHeight:'200px',searchBox:1}">
+                            {volist name="userlist" id="vo"}
+                            <option value="{$vo.uid}">{$vo.username}</option>
+                            {/volist}
+                        </select>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label class="am-u-sm-2 am-form-label">项目状态</label>
+                    <div class="am-u-sm-4">
+                        <select name="status" data-am-selected="{dropUp: 1}">
+                            {volist name="status" id="vo"}
+                            <option value="{$vo.status}">{$vo.status_name}</option>
+                            {/volist}
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn am-btn am-btn-default" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn am-btn am-btn-primary" onclick="im.submit('#addForm',this)" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>

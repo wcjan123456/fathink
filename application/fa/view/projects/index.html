@@ -6,9 +6,9 @@
 {block name="name"}项目列表{/block}
 {block name="content"}
     <div class="am-cf am-margin-bottom">
-        <a href="{:url('create_item')}" class="am-btn am-btn-primary am-icon-plus am-btn-hollow"> 添加项目</a>
-        <a href="{:url('create_item')}" class="am-btn am-btn-secondary am-icon-plus am-btn-hollow"> 添加项目清单</a>
-        <a href="{:url('finance/create_item')}" class="am-btn am-btn-success am-icon-plus am-btn-hollow"> 添加收支记录</a>
+        <a href="javascript:;" onclick="im.modal('#add',600)" class="am-btn am-btn-primary am-icon-plus am-btn-hollow"> 项目</a>
+        <a href="{:url('create_list')}" class="am-btn am-btn-secondary am-icon-plus am-btn-hollow"> 报价</a>
+        <a href="{:url('finance/create_item')}" class="am-btn am-btn-success am-icon-plus am-btn-hollow"> 收支记录</a>
         <form class="am-form am-form-inline am-fr">
             <div class="am-form-group">
                 <div class="am-dropdown" data-am-dropdown>
@@ -94,7 +94,6 @@
                         <ul class="am-dropdown-content">
                             <li><a href="{:url('ed_project',['id'=>$vo['id']])}" class="am-icon-pencil"> 编辑</a></li>
                             <li><a href="javascript:;" onclick="edStatus({$vo.id},{$vo.status})" class="am-icon-refresh"> 进度修改</a></li>
-                            <li><a href="{:url('project_upload_design',['id'=>$vo['id']])}" class="am-icon-cloud-upload"> 上传设计图</a></li>
                             <li><a href="javascript:;" onclick="delProject({$vo.id})" class="am-icon-trash-o"> 删除</a></li>
                         </ul>
                     </div>
@@ -140,6 +139,7 @@
         </div>
     </div>
 </div>
+{include file="projects/block_add_project"/}
 {/block}
 {block name="js"}
 <script>
