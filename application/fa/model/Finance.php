@@ -46,7 +46,7 @@ class Finance extends Model
      * @return \think\Paginator
      * @throws \think\exception\DbException
      */
-    public function getFinancePage($map=[]){
+    public function getFinancePage($map=[],$page=20){
         $map[]=['f.status','=',1];
         $subject = Request::get('subject','');
         $getInterval = Request::get('interval','');
@@ -83,7 +83,7 @@ class Finance extends Model
             f.payee,f.dateline,f.status,p.subject,m.username')
             ->where($map)
             ->order('f.id','desc')
-            ->paginate(20);
+            ->paginate($page);
 
         $payment = Config::get('payment');
         foreach ($data as $item=>$value){

@@ -14,6 +14,7 @@ Route::get('think', function () {
 });
 
 Route::get('hello/:name', 'index/hello');
+Route::get('v1/:action', 'api/v1/oauth');
 
 return [
 
