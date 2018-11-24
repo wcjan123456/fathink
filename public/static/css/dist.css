@@ -2337,7 +2337,7 @@ pre code {
 .am-btn {
     display: inline-block;
     margin-bottom: 0;
-    padding: .55rem 1rem;
+    padding: .5em 1em;
     vertical-align: middle;
     font-size: 1rem;
     font-weight: 400;
@@ -3065,7 +3065,7 @@ output {
     width: 100%;
     padding: .5em;
     font-size: 1rem;
-    line-height: 1.2;
+    line-height: 1;
     color: #333;
     vertical-align: middle;
     background-color: #fff;
@@ -3085,11 +3085,11 @@ output {
 
 .am-form input[type=color]:focus, .am-form input[type=date]:focus, .am-form input[type=datetime-local]:focus, .am-form input[type=datetime]:focus, .am-form input[type=email]:focus, .am-form input[type=month]:focus, .am-form input[type=number]:focus, .am-form input[type=password]:focus, .am-form input[type=search]:focus, .am-form input[type=tel]:focus, .am-form input[type=text]:focus, .am-form input[type=time]:focus, .am-form input[type=url]:focus, .am-form input[type=week]:focus, .am-form select:focus, .am-form textarea:focus, .am-form-field:focus {
     background-color: #fefffe;
-    border-color: #40a9ff;
+    border-color: #0cc2aa;
     border-right-width: 1px !important;
     outline: 0;
-    -webkit-box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
-    box-shadow: 0 0 0 2px rgba(24, 144, 255, .2)
+    -webkit-box-shadow: 0 0 0 2px rgba(12, 194, 170, .2);
+    box-shadow: 0 0 0 2px rgba(12, 194, 170, .2)
 }
 
 .am-form input[type=color]::-webkit-input-placeholder, .am-form input[type=date]::-webkit-input-placeholder, .am-form input[type=datetime-local]::-webkit-input-placeholder, .am-form input[type=datetime]::-webkit-input-placeholder, .am-form input[type=email]::-webkit-input-placeholder, .am-form input[type=month]::-webkit-input-placeholder, .am-form input[type=number]::-webkit-input-placeholder, .am-form input[type=password]::-webkit-input-placeholder, .am-form input[type=search]::-webkit-input-placeholder, .am-form input[type=tel]::-webkit-input-placeholder, .am-form input[type=text]::-webkit-input-placeholder, .am-form input[type=time]::-webkit-input-placeholder, .am-form input[type=url]::-webkit-input-placeholder, .am-form input[type=week]::-webkit-input-placeholder, .am-form select::-webkit-input-placeholder, .am-form textarea::-webkit-input-placeholder, .am-form-field::-webkit-input-placeholder {
@@ -11334,10 +11334,11 @@ label.am-checkbox, label.am-radio {
 }
 
 .am-selected-btn.am-btn-default:active, .am-selected-btn.am-btn-default:focus {
-    -webkit-box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
-    box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
-    background-color: #fff !important;
-    border-color: #40a9ff !important
+    border-color: #0cc2aa !important;
+    border-right-width: 1px !important;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 2px rgba(12, 194, 170, .2);
+    box-shadow: 0 0 0 2px rgba(12, 194, 170, .2)
 }
 
 .am-invalid .am-selected-btn {
@@ -12963,10 +12964,6 @@ a {
     padding: .5rem 1rem;
     font-size: 16px;
     border-left: 2px solid #1d61ff
-}
-
-.am-btn {
-    border-radius: 2px
 }
 
 .am-panel-default > .am-panel-footer, .am-panel-default > .am-panel-hd {

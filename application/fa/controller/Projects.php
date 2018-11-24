@@ -27,19 +27,14 @@ class Projects extends Common
     public function index(){
         $projectModel = new \app\fa\model\Projects();
 
-        //读取配置文件项目状态
-        $projectStatus = Config::get('projectStatus');
-        $this->assign('status',$projectStatus);
-
         //项目状态和紧急程度配置输出
-        $status = $projectModel->projectStatus;
         $level = $projectModel->projectLevel;
-        $this->assign('status',$status);
         $this->assign('level',$level);
 
         $getStatus = Request::get('status','','intval');
         $getInterval = Request::get('interval','','intval');
         $subject = Request::get('subject','','htmlentities');
+
         $this->assign('getStatus',$getStatus);
         $this->assign('interval',$getInterval);
         $map=[];
@@ -87,8 +82,7 @@ class Projects extends Common
 
     /**
      * 添加项目
-     * @return mixed
-     * @throws \think\exception\DbException
+     * @return array|mixed
      */
     public function create_item(){
         //添加数据操作 ajax 添加数据
