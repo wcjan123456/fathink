@@ -63,12 +63,12 @@ class Projects extends Model
      * @return \think\Paginator
      * @throws \think\exception\DbException
      */
-    public function getProjectsPage($map=''){
+    public function getProjectsPage($map='',$rows=15){
         $data = $this->alias('p')
             ->join('member m','p.pm_id = m.uid','LEFT')
             ->field('p.id,p.subject,p.price,p.level,p.customer,p.dateline,p.end_time,p.status,m.username,p.pm_id')
             ->where($map)
-            ->order('p.id','desc')->paginate(15);
+            ->order('p.id','desc')->paginate($rows);
         foreach ($data as $key=>$vaule){
             $data[$key]['percentage'] = ceil($vaule['status']/9*100);
             $data[$key]['statusValue'] = $this->projectStatus[$vaule['status']-1];
