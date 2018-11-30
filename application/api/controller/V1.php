@@ -67,10 +67,10 @@ class V1 extends Controller
         $project = new Projects();
         $data = $project->getProjectsPage('',6);
         $data = $data->toArray();
-        if($data){
+        if($data['data']){
             $this->result($data['data'],200,'request is success','json');
         }else{
-            $this->result('',404,'没有更多数据了');
+            $this->result('',404,'没有更多数据了','json');
         }
 
     }
